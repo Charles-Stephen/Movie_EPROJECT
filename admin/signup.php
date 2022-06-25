@@ -50,8 +50,8 @@
                         <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <p class="text-danger text-center"><?php if(isset($error)) { echo $error; } ?></p>
                             <div class="d-flex align-items-center justify-content-between mb-3">
-                                <a href="index.html" class="">
-                                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>My Movie</h3>
+                                <a href="index.php" class="">
+                                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Movie Booking System</h3>
                                 </a>
                                 <h3>Sign Up</h3>
                             </div>
@@ -73,10 +73,6 @@
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingText" placeholder="jhondoe" name="name">
                                 <label for="floatingText">Username</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" placeholder="jhondoe" name="dob" onfocus="(this.type='date')">
-                                <label for="floatingText">Date of Birth</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
@@ -139,12 +135,11 @@
             move_uploaded_file($tmpname, $path);
             $profile_img = $imgname;
             $name = $_POST["name"];
-            $dob = $_POST["dob"];
             $pass = $_POST["pass"];
             $pass = md5($pass);
             $ph = $_POST["phone"];
             $user_type = 0;
-            $inp = "INSERT INTO `users`(`profile`, `Name`, `DOB`, `Email`, `Pass`, `Phone`, `Credit_Card`, `user_type`) VALUES ('$profile_img','$name','$dob','$email','$pass','$ph',$c_n,$user_type)";
+            $inp = "INSERT INTO `users`(`profile`, `Name`, `Email`, `Pass`, `Phone`, `Credit_Card`, `user_type`) VALUES ('$profile_img','$name','$email','$pass','$ph',$c_n,$user_type)";
             $result2 = mysqli_query($db, $inp);
             ?>
                 <Script>
