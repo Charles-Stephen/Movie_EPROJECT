@@ -1,3 +1,43 @@
+<?php
+session_start();
+
+  if(isset($_SESSION["name"]) != null) {
+    header("Location: index.php");
+  }
+
+    $db = mysqli_connect("localhost", "root", "", "my_movie");
+
+    if(isset($_POST["submit"])) {
+        $email = $_POST["email"];
+        $c_n = $_POST["card_No"];
+        $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Credit_Card` = $c_n";
+        $result = mysqli_query($db, $sel);
+        $dr = mysqli_num_rows($result);
+        if($dr == null) {                        
+            $error = "Email OR Credit Card Already Exists";
+        }
+        else {
+            $filename = $_FILES["image"]["name"];
+            $imgname = rand() . $filename;
+            $tmpname = $_FILES["image"]["tmp_name"];
+            $path = "./profile/" . $imgname;
+            move_uploaded_file($tmpname, $path);
+            $profile_img = $imgname;
+            $name = $_POST["name"];
+            $pass = $_POST["pass"];
+            $pass = md5($pass);
+            $ph = $_POST["phone"];
+            $user_type = 0;
+            $inp = "INSERT INTO `users`(`profile`, `Name`, `Email`, `Pass`, `Phone`, `Credit_Card`, `user_type`) VALUES ('$profile_img','$name','$email','$pass','$ph',$c_n,$user_type)";
+            $result2 = mysqli_query($db, $inp);
+            ?>
+                <Script>
+                    window.location.assign("./signin.php");
+                </Script>
+            <?php
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +91,7 @@
                         <p class="text-danger text-center"><?php if(isset($error)) { echo $error; } ?></p>
                             <div class="text-center align-items-center justify-content-between mb-3">
                                 <a href="index.php" class="">
-                                    <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></i></h3>
+                                    <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></h3>
                                 </a>
                                 <h3><i class="fa fa-user-edit me-2"></i> Sign Up</h3>
                             </div>
@@ -83,7 +123,7 @@
                                 <label for="floatingPassword">Password</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" placeholder="jhondoe" name="phone">
+                                <input type="tel" class="form-control" id="floatingText" placeholder="jhondoe" name="phone">
                                 <label for="floatingText">Phone</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -116,36 +156,3 @@
 </body>
 
 </html>
-<?php
-    $db = mysqli_connect("localhost", "root", "", "my_movie");
-
-    if(isset($_POST["submit"])) {
-        $email = $_POST["email"];
-        $c_n = $_POST["card_No"];
-        $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Credit_Card` = $c_n";
-        $result = mysqli_query($db, $sel);
-        if(mysqli_num_rows($result)) {                        
-            $error = "Email OR Credit Card Already Exists";
-        }
-        else {
-            $filename = $_FILES["image"]["name"];
-            $imgname = rand() . $filename;
-            $tmpname = $_FILES["image"]["tmp_name"];
-            $path = "./profile/" . $imgname;
-            move_uploaded_file($tmpname, $path);
-            $profile_img = $imgname;
-            $name = $_POST["name"];
-            $pass = $_POST["pass"];
-            $pass = md5($pass);
-            $ph = $_POST["phone"];
-            $user_type = 0;
-            $inp = "INSERT INTO `users`(`profile`, `Name`, `Email`, `Pass`, `Phone`, `Credit_Card`, `user_type`) VALUES ('$profile_img','$name','$email','$pass','$ph',$c_n,$user_type)";
-            $result2 = mysqli_query($db, $inp);
-            ?>
-                <Script>
-                    window.location.assign("./signin.php");
-                </Script>
-            <?php
-        }
-    }
-?>

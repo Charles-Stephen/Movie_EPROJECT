@@ -1,43 +1,22 @@
 <?php
 session_start();
 
-  if(isset($_SESSION["name"]) != null) {
-    header("Location: index.php");
-  }
-  $db = mysqli_connect("localhost", "root", "", "my_movie");
+$db = mysqli_connect("localhost", "root", "", "my_movie");
 
-  if (isset($_POST["login"])) {                    
-      $email = $_POST["email"];
-      // $remember_me = $_POST["remember_me"];
-      $pass = $_POST["pass"];
-      $pass = md5($pass);
-      if(!empty($_POST["remember"])) {
-          setcookie("username",$_POST["email"],time()+ (86400 * 7),'/');
-          setcookie("password",$_POST["pass"],time()+ (86400 * 7),'/');
-      } else{
-          setcookie("username",'');
-          setcookie("password",'');
-        }
-      $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Pass` = '$pass'";
-      $result = mysqli_query($db, $sel);
-      if(mysqli_num_rows($result)) {
-        while($row = mysqli_fetch_array($result)) {
-          $_SESSION["name"] = $row[2];                      
-          $_SESSION["mytype"] = $row[8];
-          $_SESSION["profile"] = $row[1];                        
-        }
-        ?>
-        <Script>
-            window.location.assign("./index.php");
-        </Script>
-        <?php
-      }  
-      else {
-        $error = "Invalid Email or Password";
-      }
-    }
-  
-  ?>
+if(isset($_POST["submit"])) {
+    $email = $_POST["email"];
+    $pass = $_POST["pass"];
+    $pass = md5($pass);
+    $upd = "UPDATE `users` SET `Email`='$email',`Pass`='$pass' WHERE `id` = '$myid'";
+    $result2 = mysqli_query($db, $upd);                        
+    ?>
+    <Script>
+        window.location.assign("./signin.php");
+    </Script>
+    <?php
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,34 +65,38 @@ session_start();
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <?php
+                    $myid = $_GET["id"];                
+                    $sel = "SELECT * FROM `users` WHERE `id` = '$myid'";
+                    $result = mysqli_query($db, $sel);    
+                    
+                    if(mysqli_num_rows($result)) {
+                        while($row = mysqli_fetch_array($result)) {
+                            
+                ?>
                     <form action="#" method="post">
                         <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
-                        <p class="text-danger text-center"><?php if(isset($error)) { echo $error; } ?></p>
                             <div class="text-center align-items-center justify-content-between mb-3">
                                 <a href="index.php" class="">
                                     <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></h3>
                                 </a>
-                                <h3><i class="fa fa-user-edit me-2"></i> Sign In</h3>
+                                <h3><i class="fa fa-user-edit me-2"></i> Change Email Password</h3>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" name="email" class="form-control" id="floatingInput" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" placeholder="name@example.com">
+                                <input type="email" name="email" value="<?php echo $row[4]; ?>" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" name="pass" class="form-control" id="floatingPassword" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder="Phone">
+                                <label for="floatingPassword">New Password</label>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-checkbox">
-                                    <input type="checkbox" name="remember" value="1"> Remember me
-                                </div>
-                                <a href="forgot.php">Forgot Password?</a>
-                            </div>
-                            <button type="submit" name="login" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                            <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
-                            <p class="text-center mb-0"><i class="fas fa-long-arrow-alt-left"></i> <a href="./home/index.php">Go to Customer Panel</a></p>                        
+                            <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>
                         </div>
                     </form>
+                <?php
+                        }
+                    }
+                ?>
                 </div>
             </div>
         </div>
