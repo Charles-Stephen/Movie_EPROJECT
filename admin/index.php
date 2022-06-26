@@ -177,10 +177,10 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
+                                            <th class="col">#</th>
                                             <th scope="col">Profile</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">DOB</th>
+                                            <th class="col">Name</th>
+                                            <th class="col">DOB</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Phone</th>
                                             <th scope="col">Credit Card No.</th>
@@ -200,8 +200,8 @@
                                                     $i++;
                                         ?>
                                         <tr>
-                                            <th scope="row"><?php echo $i; ?></th>
-                                            <td><img src="profile/<?php echo $row2[1]; ?>" style="height: 3vw;" alt=""></td>
+                                            <th class="align-middle" scope="row"><?php echo $i; ?></th>
+                                            <td class="align-middle"><img src="profile/<?php echo $row2[1]; ?>" style="height: 3vw;" alt=""></td>
                                             <td class="align-middle"><?php echo $row2[2]; ?></td>
                                             <td class="align-middle"><?php echo $row2[3]; ?></td>
                                             <td class="align-middle"><?php echo $row2[4]; ?></td>
@@ -212,6 +212,13 @@
                                                     ?>
                                                         <td class="align-middle"> <span class="badge bg-success badge-sm">ADMIN</span> </td>
                                                         <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                    <?php
+                                                }
+                                                else {
+                                                    ?>
+                                                        <td class="align-middle"> <span class="badge bg-success badge-sm">USER</span> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                        <td class="align-middle"> <a href="profedit.php"><span class="badge bg-danger rounded-pill badge-sm">EDIT</span></a> </td>
                                                     <?php
                                                 }
                                             ?>
@@ -229,6 +236,74 @@
             </div>
             <!-- All Account Log End-->
 
+            <!-- All Transactions Start -->               
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">                    
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">All Transactions</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col">#</th>
+                                            <th scope="col">Profile</th>
+                                            <th class="col">Name</th>
+                                            <th class="col">DOB</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Credit Card No.</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col" style="visibility: hidden;">Details</th>
+                                            <th scope="col" style="visibility: hidden;">EDIT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $acc = "SELECT * FROM `users`";
+                                            $result2 = mysqli_query($db, $acc);
+                                            $ch = mysqli_num_rows($result2);
+                                            if($ch) {
+                                                $i = 0;
+                                                while($row2 = mysqli_fetch_array($result2)) {                                                    
+                                                    $i++;
+                                        ?>
+                                        <tr>
+                                            <th class="align-middle" scope="row"><?php echo $i; ?></th>
+                                            <td class="align-middle"><img src="profile/<?php echo $row2[1]; ?>" style="height: 3vw;" alt=""></td>
+                                            <td class="align-middle"><?php echo $row2[2]; ?></td>
+                                            <td class="align-middle"><?php echo $row2[3]; ?></td>
+                                            <td class="align-middle"><?php echo $row2[4]; ?></td>
+                                            <td class="align-middle"><?php echo $row2[6]; ?></td>
+                                            <td class="align-middle"><?php echo $row2[7]; ?></td>
+                                            <?php
+                                                if($row2[8] == 0) {
+                                                    ?>
+                                                        <td class="align-middle"> <span class="badge bg-success badge-sm">ADMIN</span> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                    <?php
+                                                }
+                                                else {
+                                                    ?>
+                                                        <td class="align-middle"> <span class="badge bg-success badge-sm">USER</span> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                        <td class="align-middle"> <a href="profedit.php"><span class="badge bg-danger rounded-pill badge-sm">EDIT</span></a> </td>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </tr>
+                                        <?php                                                    
+                                                }
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- All Transactions End -->
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -239,7 +314,7 @@
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="#">Charles Stephen, Maryam Fatima, Momna Khan</a>
+                            Designed: <a href="#">Charles Stephen, Maryam Fatima, Momna Khan</a>
                             <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                     </div>
