@@ -210,9 +210,8 @@
                                             <?php
                                                 if($row2[8] == 0) {
                                                     ?>
-                                                        <td class="align-middle"> <span class="wrap"></span> </td>
-                                                        <td class="align-middle"></td>
-                                                        <td class="align-middle"></td>
+                                                        <td class="align-middle"> <span class="badge bg-success badge-sm">ADMIN</span> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
                                                     <?php
                                                 }
                                             ?>
