@@ -49,11 +49,11 @@
                     <form action="#" method="post" enctype="multipart/form-data">
                         <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <p class="text-danger text-center"><?php if(isset($error)) { echo $error; } ?></p>
-                            <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="text-center align-items-center justify-content-between mb-3">
                                 <a href="index.php" class="">
-                                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Movie Booking System</h3>
+                                    <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></i></h3>
                                 </a>
-                                <h3>Sign Up</h3>
+                                <h3><i class="fa fa-user-edit me-2"></i> Sign Up</h3>
                             </div>
                             <div class="text-center">
                                 <div class="ms-auto me-auto rounded border border-primary" style="min-height: 10vw; max-width: 20vw; max-height: 20vw;">
