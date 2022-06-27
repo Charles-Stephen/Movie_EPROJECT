@@ -66,27 +66,9 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="movie.php" class="nav-item nav-link"><i class="fas fa-film"></i>Movies</a>
+                    <a href="tickets.php" class="nav-item nav-link"><i class="fas fa-ticket-alt"></i>Tickets</a>
                 </div>
             </nav>
         </div>
@@ -120,6 +102,7 @@
 
             <!-- Profile Start -->
             <div class="container-fluid pt-4 px-4">
+                <h1 class="text-center">Wellcome To Dashboard</h1>
                 <div class="row g-4">
                     <img src="profile/<?php echo $_SESSION["profile"]; ?>" class="col-sm-12 col-xl-6" alt="">
                     <div class="col-sm-12 col-xl-6">
@@ -167,7 +150,63 @@
             </div>
             <!-- Profile End -->
 
-            <!-- All Account Log Start -->            
+            <!-- All Complaints Start -->            
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">                    
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Complaints</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Subject</th>
+                                            <th scope="col">Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $cmp = "SELECT * FROM `complaints`";
+                                            $result3 = mysqli_query($db, $cmp);
+                                            $cp = mysqli_num_rows($result3);
+                                            if($cp) {
+                                                $i = 0;
+                                                while($row3 = mysqli_fetch_array($result3)) {                                                    
+                                                    $i++;
+                                        ?>
+                                        <tr>
+                                            <th class="align-middle" scope="row"><?php echo $i; ?></th>
+                                            <td class="align-middle"><?php echo $row3[1]; ?></td>
+                                            <td class="align-middle"><?php echo $row3[2]; ?></td>
+                                            <td class="align-middle"><?php echo $row3[3]; ?></td>
+                                            <td class="align-middle"><?php echo $row3[4]; ?></td>                                            
+                                        </tr>
+                                        <?php                                                    
+                                                }
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                                        <?php
+                                            if($cp == null) {
+                                                ?>
+                                                    <tr>
+                                                        <td><h3 class="font-monospace text-center fw-lighter"> No Complaints Found </h3></td>
+                                                    </tr>
+                                                <?php
+                                            }
+                                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- All Complaints End-->
+
+            <!-- All Account Log Start -->               
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">                    
                     <div class="col-12">
@@ -211,14 +250,14 @@
                                                 if($row2[8] == 0) {
                                                     ?>
                                                         <td class="align-middle"> <span class="badge bg-success badge-sm">ADMIN</span> </td>
-                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
                                                     <?php
                                                 }
                                                 else {
                                                     ?>
                                                         <td class="align-middle"> <span class="badge bg-success badge-sm">USER</span> </td>
-                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
-                                                        <td class="align-middle"> <a href="profedit.php"><span class="badge bg-danger rounded-pill badge-sm">EDIT</span></a> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                        <td class="align-middle"> <a href="profedit.php"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
                                                     <?php
                                                 }
                                             ?>
@@ -234,76 +273,7 @@
                     </div>
                 </div>
             </div>
-            <!-- All Account Log End-->
-
-            <!-- All Transactions Start -->               
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">                    
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">All Transactions</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col">#</th>
-                                            <th scope="col">Profile</th>
-                                            <th class="col">Name</th>
-                                            <th class="col">DOB</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Phone</th>
-                                            <th scope="col">Credit Card No.</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col" style="visibility: hidden;">Details</th>
-                                            <th scope="col" style="visibility: hidden;">EDIT</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                            $acc = "SELECT * FROM `users`";
-                                            $result2 = mysqli_query($db, $acc);
-                                            $ch = mysqli_num_rows($result2);
-                                            if($ch) {
-                                                $i = 0;
-                                                while($row2 = mysqli_fetch_array($result2)) {                                                    
-                                                    $i++;
-                                        ?>
-                                        <tr>
-                                            <th class="align-middle" scope="row"><?php echo $i; ?></th>
-                                            <td class="align-middle"><img src="profile/<?php echo $row2[1]; ?>" style="height: 3vw;" alt=""></td>
-                                            <td class="align-middle"><?php echo $row2[2]; ?></td>
-                                            <td class="align-middle"><?php echo $row2[3]; ?></td>
-                                            <td class="align-middle"><?php echo $row2[4]; ?></td>
-                                            <td class="align-middle"><?php echo $row2[6]; ?></td>
-                                            <td class="align-middle"><?php echo $row2[7]; ?></td>
-                                            <?php
-                                                if($row2[8] == 0) {
-                                                    ?>
-                                                        <td class="align-middle"> <span class="badge bg-success badge-sm">ADMIN</span> </td>
-                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
-                                                    <?php
-                                                }
-                                                else {
-                                                    ?>
-                                                        <td class="align-middle"> <span class="badge bg-success badge-sm">USER</span> </td>
-                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-danger rounded-pill badge-sm">DETAILS</span></a> </td>
-                                                        <td class="align-middle"> <a href="profedit.php"><span class="badge bg-danger rounded-pill badge-sm">EDIT</span></a> </td>
-                                                    <?php
-                                                }
-                                            ?>
-                                        </tr>
-                                        <?php                                                    
-                                                }
-                                            }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- All Transactions End -->
+            <!-- All Account Log End -->
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
