@@ -250,14 +250,14 @@
                                                 if($row2[8] == 0) {
                                                     ?>
                                                         <td class="align-middle"> <span class="badge bg-success badge-sm">ADMIN</span> </td>
-                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php?id=<?php echo $row2[0]; ?>"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
                                                     <?php
                                                 }
                                                 else {
                                                     ?>
                                                         <td class="align-middle"> <span class="badge bg-success badge-sm">USER</span> </td>
-                                                        <td class="align-middle"> <a href="profdetail.php"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
-                                                        <td class="align-middle"> <a href="profedit.php"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
+                                                        <td class="align-middle"> <a href="profdetail.php?id=<?php echo $row2[0]; ?>"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
+                                                        <td class="align-middle"> <a href="profedit.php?id=<?php echo $row2[0]; ?>"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
                                                     <?php
                                                 }
                                             ?>
