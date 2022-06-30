@@ -71,6 +71,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="theater.php" class="nav-item nav-link"><i class="fas fa-hotel"></i>Theater</a>
                     <a href="movie.php" class="nav-item nav-link"><i class="fas fa-film"></i>Movies</a>
                     <a href="tickets.php" class="nav-item nav-link"><i class="fas fa-ticket-alt"></i>Tickets</a>
                 </div>
@@ -118,24 +119,21 @@
                                         <td><?php echo $row[2]; ?></td>
                                     </tr> 
                                     <tr>
-                                        <th scope="col">Date of Birth</th>
+                                    <tr>
+                                        <th scope="col">Email</th>
                                         <td><?php echo $row[3]; ?></td>
                                     </tr> 
                                     <tr>
-                                        <th scope="col">Email</th>
-                                        <td><?php echo $row[4]; ?></td>
-                                    </tr> 
-                                    <tr>
                                         <th scope="col">Phone</th>
-                                        <td><?php echo $row[6]; ?></td>
+                                        <td><?php echo $row[5]; ?></td>
                                     </tr>       
                                     <tr>
                                         <th scope="col">Credit Card No.</th>
-                                        <td><?php echo $row[7]; ?></td>
+                                        <td><?php echo $row[6]; ?></td>
                                     </tr>
 
                                     <?php
-                                        if($row[7] = 0) {                                            
+                                        if($row[7] != 0) {                                            
                                     ?>    
                                     <tr>
                                         <th scope="col">Type</th>
@@ -143,9 +141,9 @@
                                     </tr>                       
                                 </tbody>                                
                             </table>
-                            <button class="btn btn-outline-primary">Edit</button>
+                            <a href="profedit.php?id=<?php echo $row[0]; ?>"><button class="btn btn-outline-primary">Edit</button></a>
                             <?php
-                                }
+                                } 
                                 else {
                             ?>
                                     <tr>

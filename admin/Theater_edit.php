@@ -5,41 +5,20 @@
     }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
     $id = $_GET["id"];
-    $sel = "SELECT * FROM `users` WHERE `id` = $id";
+    $sel = "SELECT * FROM `theater` WHERE `id` = $id";
     $result = mysqli_query($db, $sel);
     $row = mysqli_fetch_array($result);
     if(isset($_POST["submit"])) {
-        $filename = $_FILES["image"]["name"];
-        if($filename != null) {
-            $imgname = rand() . $filename;
-            $tmpname = $_FILES["image"]["tmp_name"];
-            $path = "./profile/" . $imgname;
-            move_uploaded_file($tmpname, $path);
-            $profile_img = $imgname;
-        }
-        else {
-            $profile_img = $row[1];
-        }
-
-        $name = $_POST["name"]; 
-        $email = $_POST["email"];
-        $c_n = $_POST["card_No"];
-        $pass = $_POST["pass"];
-        if($pass != null) {
-            $pass = md5($pass);
-        }
-        else {
-            $pass = $row[4];
-        }
-
-        $ph = $_POST["phone"];
-        $inp = "UPDATE `users` SET `profile`='$profile_img',`Name`='$name',`Email`='$email',`Pass`='$pass',`Phone`='$ph',`Credit_Card`='$c_n' WHERE `id` = $id";
-        $result2 = mysqli_query($db, $inp);
+        $thname = $_POST["thname"];
+        $seats = $_POST["seats"];
+        $screen = $_POST["screen"];
+        $th_ins = "UPDATE `theater` SET `name`='$thname',`screen`='$screen',`seats`='$seats' WHERE `id` = $id";
+        $th_result = mysqli_query($db, $th_ins);
         ?>
-            <Script>
-                window.location.assign("./index.php");
-            </Script>
-        <?php
+        <Script>
+            window.location.assign("./theater.php");
+        </Script>
+        <?php 
     }
 ?>
 <!DOCTYPE html>
@@ -137,62 +116,37 @@
             </nav>
             <!-- Navbar End -->
 
-            <!-- Blank Start -->
+
+            <!-- Profile Start -->
             <div class="container-fluid pt-4 px-4">
-            <h2 class="text-center">User Profile</h2>
-                <div class="row bg-secondary rounded align-items-center justify-content-center mx-0">
-                    <div class="col-sm-12 col-xl-8">
-                    <form action="#" method="post" enctype="multipart/form-data">
-                            <div class="text-center">
-                                <div id="MYIMG" class="ms-auto me-auto" style="min-height: 10vw; max-width: 20vw; max-height: 20vw;">
-                                    <img class="img-fluid" src="profile/<?php echo $row[1]; ?>" style="max-height: 20vw;" />
+                <h1 class="text-center">Theater</h1>
+                <div class="row g-4 bg-secondary p-3 mt-3 justify-content-center">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <form action="#" method="post">
+                                <h4>Edit Theater</h4>                                
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" value="<?php echo $row[1]; ?>" name="thname" id="floatingInput" placeholder="Movie Name">
+                                    <label for="floatingInput">Theater Name</label>
                                 </div>
-
-                                <div id="MYDIV" class="ms-auto me-auto" style="min-height: 10vw; max-width: 20vw; max-height: 20vw; display: none;">
-                                    <img id="output" class="img-fluid" style="max-height: 20vw;" />
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="screen" value="<?php echo $row[2]; ?>" class="form-control" id="floatingPassword" placeholder="Trailor">
+                                    <label for="floatingPassword">Screen</label>
                                 </div>
-                                <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
-                                <p><label for="file" onclick="showme()" class="rounded-pill btn btn-outline-primary" style="cursor: pointer;">Change Cover</label></p>
-
-                                <!-- Scripting for Image -->
-                                <script>
-                                    var loadFile = function (event) { 
-                                        var image = document.getElementById('output');
-                                        image.src = URL.createObjectURL(event.target.files[0]);
-                                    };
-
-                                    function showme() {
-                                        document.getElementById("MYIMG").style.display = "none";
-                                        document.getElementById("MYDIV").style.display = "block";
-                                    }
-                                </script>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" value="<?php echo $row[2] ?>" placeholder="jhondoe" name="name">
-                                <label for="floatingText">Username</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" value="<?php echo $row[3] ?>" placeholder="name@example.com" name="email">
-                                <label for="floatingInput">Email address</label>
-                            </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="pass">
-                                <label for="floatingPassword">New Password</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingText" value="<?php echo $row[5] ?>" placeholder="jhondoe" name="phone">
-                                <label for="floatingText">Phone</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" value="<?php echo $row[6] ?>" placeholder="jhondoe" name="card_No">
-                                <label for="floatingText">Credit Card No.</label>
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>          
-                    </form>    
+                                <div class="form-floating mb-3">
+                                    <input type="num" name="seats" value="<?php echo $row[3]; ?>" class="form-control" id="floatingPassword" placeholder="Country">
+                                    <label for="floatingPassword">Seats</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <a href="theater.php"></a><button type="button" class="btn btn-outline-light">Cancel</button></a>
+                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Blank End -->
+            <!-- Profile End -->
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

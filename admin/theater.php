@@ -6,24 +6,26 @@
     $db = mysqli_connect("localhost", "root", "", "my_movie");
 
     if(isset($_POST["submit"])) {
-        $filename = $_FILES["image"]["name"];
-        $imgname = $filename;
-        $tmpname = $_FILES["image"]["tmp_name"];
-        $path = "./profile/" . $imgname;
-        move_uploaded_file($tmpname, $path);
-        $profile_img = $imgname;
-        $name = $_POST["name"];
-        $trailor = $_POST["trailor"];
-        $descp = $_POST["descp"];
-        $genre = $_POST["genre"];
-        $country = $_POST["country"];
-        $cast = $_POST["cast"];
-        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES ('$profile_img','$name','$trailor','$descp','$genre','$country','$cast')";
-        $movie_result = mysqli_query($db, $movie_ins);
+        $thname = $_POST["thname"];
+        $seats = $_POST["seats"];
+        $screen = $_POST["screen"];
+        $th_ins = "INSERT INTO `theater`(`name`, `screen`, `seats`) VALUES ('$thname','$screen','$seats')";
+        $th_result = mysqli_query($db, $th_ins);
         ?>
-            <Script>
-                window.location.assign("./movie.php");
-            </Script>
+        <Script>
+            window.location.assign("./theater.php");
+        </Script>
+        <?php
+    }
+
+    if(isset($_POST["submit2"])) {
+        $kk = $_POST["kk"];
+        $del = "DELETE FROM `theater` WHERE `id` = $kk";
+        $del_result = mysqli_query($db, $del);
+        ?>
+        <Script>
+            window.location.assign("./theater.php");
+        </Script>
         <?php
     }
 ?>
@@ -89,8 +91,8 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="theater.php" class="nav-item nav-link"><i class="fas fa-hotel"></i>Theater</a>
-                    <a href="movie.php" class="nav-item nav-link active"><i class="fas fa-film"></i>Movies</a>
+                    <a href="theater.php" class="nav-item nav-link active"><i class="fas fa-hotel"></i>Theater</a>
+                    <a href="movie.php" class="nav-item nav-link"><i class="fas fa-film"></i>Movies</a>
                     <a href="tickets.php" class="nav-item nav-link"><i class="fas fa-ticket-alt"></i>Tickets</a>
                 </div>
             </nav>
@@ -125,12 +127,12 @@
 
             <!-- Profile Start -->
             <div class="container-fluid pt-4 px-4">
-                <h1 class="text-center">Movies</h1>
+                <h1 class="text-center">Theater</h1>
                 <div class="row g-4">                    
                     <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
                             <div class="d-flex justify-content-between mb-4">
-                                <h6>All Movies</h6>
+                                <h6>All Theaters</h6>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
                                     Add
@@ -141,55 +143,24 @@
                             <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-secondary">
-                                        <form action="#" method="post" enctype="multipart/form-data">
+                                        <form action="#" method="post">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="staticBackdropLabel">Add Movie</h4>
+                                                <h4 class="modal-title" id="staticBackdropLabel">Add Theater</h4>
                                                 <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="bg-secondary rounded h-100 p-4">
-                                                    <div class="text-center">
-                                                        <div class="ms-auto me-auto" id="MYDIV" style="min-height: 10vw; max-width: 20vw; max-height: 20vw; display: none;">
-                                                            <img id="output" class="img-fluid" style="max-height: 20vw;" />
-                                                        </div>
-                                                        <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
-                                                        <p><label for="file" onclick="picshow()" class="rounded-pill btn btn-outline-primary" style="cursor: pointer;">Cover Image</label></p>
-
-                                                        <!-- Scripting for Image -->
-                                                        <script>
-                                                            var loadFile = function (event) { 
-                                                                var image = document.getElementById('output');
-                                                                image.src = URL.createObjectURL(event.target.files[0]);
-                                                            };
-
-                                                            function picshow() {
-                                                                document.getElementById("MYDIV").style.display = "block";
-                                                            };
-                                                        </script>
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" name="thname" id="floatingInput" placeholder="Movie Name">
+                                                        <label for="floatingInput">Theater Name</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" name="name" id="floatingInput" placeholder="Movie Name">
-                                                        <label for="floatingInput">Movie Name</label>
+                                                        <input type="text" name="screen" class="form-control" id="floatingPassword" placeholder="Trailor">
+                                                        <label for="floatingPassword">Screen</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" name="trailor" class="form-control" id="floatingPassword" placeholder="Trailor">
-                                                        <label for="floatingPassword">Trailor</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" placeholder="Add Description" name="descp" id="floatingTextarea" style="height: 150px;"></textarea>
-                                                        <label for="floatingTextarea">Description</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" name="genre" placeholder="Genre" id="floatingTextarea" style="height: 150px;"></textarea>
-                                                        <label for="floatingTextarea">Genre</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <input type="text" name="country" class="form-control" id="floatingPassword" placeholder="Country">
-                                                        <label for="floatingPassword">Country</label>
-                                                    </div>
-                                                    <div class="form-floating">
-                                                        <textarea class="form-control" placeholder="Cast" name="cast" id="floatingTextarea" style="height: 150px;"></textarea>
-                                                        <label for="floatingTextarea">Cast</label>
+                                                        <input type="num" name="seats" class="form-control" id="floatingPassword" placeholder="Country">
+                                                        <label for="floatingPassword">Seats</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,17 +177,16 @@
                                     <thead>
                                         <tr>
                                             <th class="col">#</th>
-                                            <th scope="col">Cover</th>
-                                            <th class="col">Name</th>
-                                            <th class="col">Trailer</th>
-                                            <th class="col">Genre</th>
-                                            <th scope="col" style="visibility: hidden;">Details</th>
+                                            <th scope="col">Theater Name</th>
+                                            <th class="col">Screen</th>
+                                            <th class="col">Total Seats</th>
                                             <th scope="col" style="visibility: hidden;">EDIT</th>
+                                            <th scope="col" style="visibility: hidden;">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $sel = "SELECT * FROM `allmovies`";
+                                            $sel = "SELECT * FROM `theater`";
                                             $result = mysqli_query($db, $sel);
                                             if(mysqli_num_rows($result)) {
                                                 $i = 0;
@@ -225,32 +195,36 @@
                                         ?>
                                         <tr>
                                             <td class="align-middle" scope="row"><?php echo $i; ?></td>
-                                            <td class="align-middle"><img src="profile/<?php echo $row[1]; ?>" style="height: 3vw;" alt=""></td>
+                                            <td class="align-middle"><?php echo $row[1]; ?></td>
                                             <td class="align-middle"><?php echo $row[2]; ?></td>
-                                            <td class="align-middle">
-                                                <!-- Button trigger modal -->
-                                                <div type="button" data-bs-toggle="modal" data-bs-target="#k<?php echo $i; ?>">
-                                                    <i class="fas fa-play-circle fa-2x"></i>
-                                                </div>
+                                            <td class="align-middle"><?php echo $row[3]; ?></td>
+                                            <td class="align-middle"> <a href="Theater_edit.php?id=<?php echo $row[0]; ?>"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
+                                            <td class="align-middle"> <span type="button" data-bs-toggle="modal" data-bs-target="#k<?php echo $i; ?>" class="badge bg-danger rounded-pill badge-sm">DELETE</span> </td>
+                                        </tr>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="k<?php echo $i; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-xl">
-                                                        <div class="modal-content bg-transparent">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body text-center"><?php echo $row[3]; ?>
-                                                                <!-- <iframe class="embed-responsive-item" width="854" height="480" src="https://www.youtube.com/embed/" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="k<?php echo $i; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-secondary">
+                                                    <form action="#" method="post">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="staticBackdropLabel">Delete Theater</h4>
+                                                            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="bg-secondary p-4">
+                                                                <h5 class="text-center">ARE YOU SURE YOU WANT TO DELETE "<?php echo $row[1]; ?>"</h5>
+                                                                <input type="hidden" name="kk" value="<?php echo $row[0]; ?>">
                                                             </div>
                                                         </div>
-                                                    </div> 
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" name="submit2" class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </td>
-                                            <td class="align-middle"><?php echo $row[5]; ?></td>
-                                            <td class="align-middle"> <a href="movie_detail.php?id=<?php echo $row[0]; ?>"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
-                                            <td class="align-middle"> <a href="movie_edit.php?id=<?php echo $row[0]; ?>"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
-                                        </tr>
+                                            </div>
+                                        </div>
                                         <?php                                                    
                                                 }
                                             }
