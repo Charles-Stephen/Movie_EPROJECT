@@ -12,18 +12,32 @@
         $path = "./profile/" . $imgname;
         move_uploaded_file($tmpname, $path);
         $profile_img = $imgname;
+
         $name = $_POST["name"];
-        $trailor = $_POST["trailor"];
+        $name = mysqli_real_escape_string($db,$name);
+
+        $filename1 = $_FILES["myvd"]["name"];
+        $vdname = $filename1;
+        $tmpname1 = $_FILES["myvd"]["tmp_name"];
+        $path1 = "./movievideo/" . $vdname;
+        move_uploaded_file($tmpname1, $path1);
+        $trailor = $vdname;
+
         $descp = $_POST["descp"];
+        $descp = mysqli_real_escape_string($db,$descp);
+
         $genre = $_POST["genre"];
+        $genre = mysqli_real_escape_string($db,$genre);
         $country = $_POST["country"];
+        $country = mysqli_real_escape_string($db,$country);
         $cast = $_POST["cast"];
-        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES ('$profile_img','$name','$trailor','$descp','$genre','$country','$cast')";
+        $cast = mysqli_real_escape_string($db,$cast);
+echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES ('$profile_img','$name','$trailor','$descp','$genre','$country','$cast')";
         $movie_result = mysqli_query($db, $movie_ins);
         ?>
-            <Script>
+            <!-- <Script>
                 window.location.assign("./movie.php");
-            </Script>
+            </Script> -->
         <?php
     }
 ?>
@@ -171,10 +185,16 @@
                                                         <input type="text" class="form-control" name="name" id="floatingInput" placeholder="Movie Name">
                                                         <label for="floatingInput">Movie Name</label>
                                                     </div>
-                                                    <div class="form-floating mb-3">
+                                                    
+                                                    <div class="mb-3">
+                                                        <label for="formFile" class="form-label">Upload Trailor</label>
+                                                        <input class="form-control bg-dark" name="myvd" type="file" id="formFile">
+                                                    </div>
+
+                                                    <!-- <div class="form-floating mb-3">
                                                         <input type="text" name="trailor" class="form-control" id="floatingPassword" placeholder="Trailor">
                                                         <label for="floatingPassword">Trailor</label>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="form-floating mb-3">
                                                         <textarea class="form-control" placeholder="Add Description" name="descp" id="floatingTextarea" style="height: 150px;"></textarea>
                                                         <label for="floatingTextarea">Description</label>
@@ -240,8 +260,8 @@
                                                             <div class="modal-header">
                                                                 <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body text-center"><?php echo $row[3]; ?>
-                                                                <!-- <iframe class="embed-responsive-item" width="854" height="480" src="https://www.youtube.com/embed/" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                                                            <div class="modal-body text-center">
+                                                                <video width="854" height="480" src="movievideo/<?php echo $row[3]; ?>"></video>
                                                             </div>
                                                         </div>
                                                     </div> 

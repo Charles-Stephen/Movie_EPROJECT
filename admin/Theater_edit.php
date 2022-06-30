@@ -138,7 +138,7 @@
                                     <label for="floatingPassword">Seats</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <a href="theater.php"></a><button type="button" class="btn btn-outline-light">Cancel</button></a>
+                                    <a href="theater.php"><button type="button" class="btn btn-outline-light">Cancel</button></a>
                                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
