@@ -32,12 +32,12 @@
         $country = mysqli_real_escape_string($db,$country);
         $cast = $_POST["cast"];
         $cast = mysqli_real_escape_string($db,$cast);
-echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES ('$profile_img','$name','$trailor','$descp','$genre','$country','$cast')";
+        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES ('$profile_img','$name','$trailor','$descp','$genre','$country','$cast')";
         $movie_result = mysqli_query($db, $movie_ins);
         ?>
-            <!-- <Script>
+            <Script>
                 window.location.assign("./movie.php");
-            </Script> -->
+            </Script>
         <?php
     }
 ?>
@@ -52,7 +52,8 @@ echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- <link href="img/favicon.ico" rel="icon"> -->
+    <link rel="icon" href="img/signage-removebg-preview.png" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,7 +89,7 @@ echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="index.php" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="ms-auto me-auto navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -105,6 +106,7 @@ echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `
                     <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="theater.php" class="nav-item nav-link"><i class="fas fa-hotel"></i>Theater</a>
                     <a href="movie.php" class="nav-item nav-link active"><i class="fas fa-film"></i>Movies</a>
+                    <a href="schedule.php" class="nav-item nav-link"><i class="fas fa-calendar-alt"></i>Schedule</a>
                     <a href="tickets.php" class="nav-item nav-link"><i class="fas fa-ticket-alt"></i>Tickets</a>
                 </div>
             </nav>
@@ -191,10 +193,6 @@ echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `
                                                         <input class="form-control bg-dark" name="myvd" type="file" id="formFile">
                                                     </div>
 
-                                                    <!-- <div class="form-floating mb-3">
-                                                        <input type="text" name="trailor" class="form-control" id="floatingPassword" placeholder="Trailor">
-                                                        <label for="floatingPassword">Trailor</label>
-                                                    </div> -->
                                                     <div class="form-floating mb-3">
                                                         <textarea class="form-control" placeholder="Add Description" name="descp" id="floatingTextarea" style="height: 150px;"></textarea>
                                                         <label for="floatingTextarea">Description</label>
@@ -261,7 +259,7 @@ echo        $movie_ins = "INSERT INTO `allmovies`(`movie_cover`, `movie_name`, `
                                                                 <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <video width="854" height="480" src="movievideo/<?php echo $row[3]; ?>"></video>
+                                                                <video width="854" height="480" controls src="movievideo/<?php echo $row[3]; ?>"></video>
                                                             </div>
                                                         </div>
                                                     </div> 

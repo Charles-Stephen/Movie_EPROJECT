@@ -16,7 +16,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- <link href="img/favicon.ico" rel="icon"> -->
+    <link rel="icon" href="img/signage-removebg-preview.png" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +53,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="index.php" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="ms-auto me-auto navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -69,6 +70,7 @@
                     <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="theater.php" class="nav-item nav-link"><i class="fas fa-hotel"></i>Theater</a>
                     <a href="movie.php" class="nav-item nav-link"><i class="fas fa-film"></i>Movies</a>
+                    <a href="schedule.php" class="nav-item nav-link"><i class="fas fa-calendar-alt"></i>Schedule</a>
                     <a href="tickets.php" class="nav-item nav-link"><i class="fas fa-ticket-alt"></i>Tickets</a>
                 </div>
             </nav>

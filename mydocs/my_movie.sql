@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2022 at 11:53 AM
+-- Generation Time: Jul 02, 2022 at 08:56 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -66,8 +66,10 @@ CREATE TABLE `allmovies` (
 --
 
 INSERT INTO `allmovies` (`id`, `movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES
-(4, 'Men_in_Black_International_(Official_Film_Poster).png', 'Men in Black: International', '<iframe width=\"1264\" height=\"480\" src=\"https://www.youtube.com/embed/BV-WEb2oxLk\" title=\"MEN IN BLACK: INTERNATIONAL - Official Trailer\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allow', 'The Men in Black have expanded to cover the globe but so have the villains of the universe. To keep everyone safe, decorated Agent H and determined rookie M join forces -- an unlikely pairing that just might work. When aliens that can take the form of any human arrive on Earth, H and M embark on a globe-trotting adventure to save the agency -- and ultimately the world -- from their mischievous plans.', 'Action, Comedy, Science fiction', 'United States', 'Chris Hemsworth, Tessa Thompson, Rebecca Ferguson, Kumail Nanjiani, Rafe Spall, Laurent Bourgeois, Larry Bourgeois, Emma Thompson, Liam Neeson'),
-(5, 'download.jpg', '3 idiots', '<iframe width=\"1264\" height=\"480\" src=\"https://www.youtube.com/embed/K0eDlFX9GMc\" title=\"3 Idiots | OFFICIAL trailer #1 US/indian (2009)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'In college, Farhan and Raju form a great bond with Rancho due to his positive and refreshing outlook to life. Years later, a bet gives them a chance to look for their long-lost friend whose existence seems rather elusive.', 'Comedy, Romance, Drama, Coming-of-age story', 'India', 'Aamir Khan, R. Madhavan, Sharman Joshi, Omi Vaidya, Kareena Kapoor, Boman Irani');
+(4, 'Men_in_Black_International_(Official_Film_Poster).png', 'Men in Black: International', 'MEN IN BLACK_ INTERNATIONAL.mp4', 'The Men in Black have expanded to cover the globe but so have the villains of the universe. To keep everyone safe, decorated Agent H and determined rookie M join forces -- an unlikely pairing that just might work. When aliens that can take the form of any human arrive on Earth, H and M embark on a globe-trotting adventure to save the agency -- and ultimately the world -- from their mischievous plans.', 'Action, Comedy, Science fiction', 'United States', 'Chris Hemsworth, Tessa Thompson, Rebecca Ferguson, Kumail Nanjiani, Rafe Spall, Laurent Bourgeois, Larry Bourgeois, Emma Thompson, Liam Neeson'),
+(5, 'download.jpg', '3 Idiots', '3 Idiots.mp4', 'In college, Farhan and Raju form a great bond with Rancho due to his positive and refreshing outlook to life. Years later, a bet gives them a chance to look for their long-lost friend whose existence seems rather elusive.', 'Comedy, Romance, Drama, Coming-of-age story', 'India', '	\nAamir Khan, R. Madhavan, Sharman Joshi, Omi Vaidya, Kareena Kapoor, Boman Irani'),
+(6, 'dk.jpg', 'Housefull 3', 'Housefull 3 Official Trailer _ Watch Full Movie On Eros Now.mp4', 'A father doesn\'t want his three daughters to get married. Three men try to convince the father that they\'re a good fit for his daughters, which leads to hilarious situations.', 'Action, Comedy, Romance', 'India', 'Akshay Kumar, Abhishek Bachchan, Riteish Deshmukh, Jacqueline Fernandez, Nargis Fakhri, Lisa Haydon, Jackie Shroff'),
+(7, '', 'Train To Busan 2016', 'TRAIN TO BUSAN Official Trailer _ In Cinemas 04.08.2016.mp4', 'A man (Gong Yoo), his estranged daughter and other passengers become trapped on a speeding train during a zombie outbreak in South Korea.', 'Zombie, Horror, Action, Thriller, Disaster, Adventure, Mystery, Drama', 'South Korea (English sub)', '	\r\nGong Yoo, Jung Yu-mi, Ma Dong-seok, Kim Su-an, Choi Woo-shik, Ahn So-hee, Kim Eui-sung');
 
 -- --------------------------------------------------------
 
@@ -105,6 +107,31 @@ CREATE TABLE `kids_package` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `movie_sch2`
+--
+
+CREATE TABLE `movie_sch2` (
+  `id` int(11) NOT NULL,
+  `movie_date` int(11) NOT NULL,
+  `movie_time` int(11) NOT NULL,
+  `theater_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `total_seats` int(11) NOT NULL,
+  `available_seats` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie_sch2`
+--
+
+INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES
+(1, 3, 1, 1, 5, 100, 100),
+(2, 1, 2, 1, 4, 100, 100),
+(3, 2, 2, 2, 6, 100, 100);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `movie_schedule`
 --
 
@@ -112,6 +139,67 @@ CREATE TABLE `movie_schedule` (
   `id` int(11) NOT NULL,
   `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie_schedule`
+--
+
+INSERT INTO `movie_schedule` (`id`, `date`) VALUES
+(1, '1'),
+(2, '2'),
+(3, '3'),
+(4, '4'),
+(7, '5'),
+(8, '6'),
+(9, '7'),
+(10, '8'),
+(11, '9'),
+(12, '10'),
+(13, '11'),
+(14, '12'),
+(15, '13'),
+(16, '14'),
+(17, '15'),
+(18, '16'),
+(19, '17'),
+(20, '18'),
+(21, '19'),
+(22, '20'),
+(23, '21'),
+(24, '22'),
+(25, '23'),
+(26, '24'),
+(27, '25'),
+(28, '26'),
+(29, '27'),
+(30, '28'),
+(31, '29'),
+(32, '30'),
+(33, '31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie_time`
+--
+
+CREATE TABLE `movie_time` (
+  `id` int(11) NOT NULL,
+  `time` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie_time`
+--
+
+INSERT INTO `movie_time` (`id`, `time`) VALUES
+(1, '9:00 am'),
+(2, '11:30 am'),
+(3, '2:00 pm'),
+(4, '4:30 pm'),
+(5, '7:00 pm'),
+(6, '9:30 pm'),
+(7, '12:00 am');
 
 -- --------------------------------------------------------
 
@@ -212,9 +300,21 @@ ALTER TABLE `kids_package`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `movie_sch2`
+--
+ALTER TABLE `movie_sch2`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `movie_schedule`
 --
 ALTER TABLE `movie_schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `movie_time`
+--
+ALTER TABLE `movie_time`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -255,7 +355,7 @@ ALTER TABLE `adult_package`
 -- AUTO_INCREMENT for table `allmovies`
 --
 ALTER TABLE `allmovies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `complaints`
@@ -270,10 +370,22 @@ ALTER TABLE `kids_package`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `movie_sch2`
+--
+ALTER TABLE `movie_sch2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `movie_schedule`
 --
 ALTER TABLE `movie_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `movie_time`
+--
+ALTER TABLE `movie_time`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `theater`

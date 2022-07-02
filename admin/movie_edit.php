@@ -9,9 +9,9 @@
     $result = mysqli_query($db, $sel);
     $row = mysqli_fetch_array($result);
     if(isset($_POST["submit"])) {
-        $filename = $_FILES["image"]["name"];
-        if($filename != null) {
-            $imgname = rand() . $filename;
+        $filename25 = $_FILES["image"]["name"];
+        if($filename25 != null) {
+            $imgname = rand() . $filename25;
             $tmpname = $_FILES["image"]["tmp_name"];
             $path = "./profile/" . $imgname;
             move_uploaded_file($tmpname, $path);
@@ -21,11 +21,29 @@
             $profile_img = $row[1];
         }
         $name = $_POST["name"];
-        $trailor = $_POST["trailor"];
+        $name = mysqli_real_escape_string($db,$name);
+
+        $filename1 = $_FILES["myvd"]["name"];
+        if($filename1 != null) {
+            $vdname = $filename1;
+            $tmpname1 = $_FILES["myvd"]["tmp_name"];
+            $path1 = "./movievideo/" . $vdname;
+            move_uploaded_file($tmpname1, $path1);
+            $trailor = $vdname;
+        }
+        else {
+            $trailor = $row[3];
+        }
+
         $descp = $_POST["descp"];
+        $descp = mysqli_real_escape_string($db,$descp);
+
         $genre = $_POST["genre"];
+        $genre = mysqli_real_escape_string($db,$genre);
         $country = $_POST["country"];
+        $country = mysqli_real_escape_string($db,$country);
         $cast = $_POST["cast"];
+        $cast = mysqli_real_escape_string($db,$cast);
         $movie_ins = "UPDATE `allmovies` SET `movie_cover`='$profile_img',`movie_name`='$name',`trailer`='$trailor',`movie_description`='$descp',`genre`='$genre',`country`='$country',`cast`='$cast' WHERE `id` = $id";
         $movie_result = mysqli_query($db, $movie_ins);
         ?>
@@ -46,7 +64,8 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- <link href="img/favicon.ico" rel="icon"> -->
+    <link rel="icon" href="img/signage-removebg-preview.png" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +101,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="index.php" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="ms-auto me-auto navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -99,6 +118,7 @@
                     <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="theater.php" class="nav-item nav-link"><i class="fas fa-hotel"></i>Theater</a>
                     <a href="movie.php" class="nav-item nav-link"><i class="fas fa-film"></i>Movies</a>
+                    <a href="schedule.php" class="nav-item nav-link"><i class="fas fa-calendar-alt"></i>Schedule</a>
                     <a href="tickets.php" class="nav-item nav-link"><i class="fas fa-ticket-alt"></i>Tickets</a>
                 </div>
             </nav>
@@ -141,7 +161,7 @@
                                 <h4>Edit Movie</h4>                                
                                 <div class="text-center">
                                     <div id="MYIMG" class="ms-auto me-auto" style="min-height: 10vw; max-width: 20vw; max-height: 20vw;">
-                                        <img class="img-fluid" src="profile/<?php echo $row[1]; ?>" style="max-height: 20vw;" />
+                                        <img class="img-fluid" src="profile/<?php echo $row[1]; ?>" alt="No Cover" style="max-height: 20vw;" />
                                     </div>
 
                                     <div id="MYDIV" class="ms-auto me-auto" style="min-height: 10vw; max-width: 20vw; max-height: 20vw; display: none;">
@@ -166,10 +186,10 @@
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" value="<?php echo $row[2]; ?>" name="name" id="floatingInput" placeholder="Movie Name">
                                     <label for="floatingInput">Movie Name</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="trailor" value="<?php echo $row[3]; ?>" class="form-control" id="floatingPassword" placeholder="Trailor">
-                                    <label for="floatingPassword">Trailor</label>
+                                </div>                                
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload New Trailor</label>
+                                    <input class="form-control bg-dark" name="myvd" type="file" id="formFile">
                                 </div>
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Add Description" name="descp" id="floatingTextarea" style="height: 150px;"><?php echo $row[4]; ?></textarea>
@@ -188,7 +208,7 @@
                                     <label for="floatingTextarea">Cast</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <a href="movie.php"></a><button type="button" class="btn btn-outline-light">Cancel</button></a>
+                                    <a href="movie.php"><button type="button" class="btn btn-outline-light">Cancel</button></a>
                                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
