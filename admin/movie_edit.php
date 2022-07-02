@@ -5,7 +5,7 @@
     }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
     $id = $_GET["id"];
-    $sel = "SELECT * FROM `allmovies` WHERE `id` = $id";
+    $sel = "SELECT * FROM `allmovies` WHERE `id` = $id"; 
     $result = mysqli_query($db, $sel);
     $row = mysqli_fetch_array($result);
     if(isset($_POST["submit"])) {
@@ -157,7 +157,7 @@
                 <div class="row g-4 bg-secondary p-3 mt-3 justify-content-center">
                     <div class="col-sm-12 col-xl-8">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <form action="#" method="post">
+                            <form action="#" method="post" enctype="multipart/form-data">
                                 <h4>Edit Movie</h4>                                
                                 <div class="text-center">
                                     <div id="MYIMG" class="ms-auto me-auto" style="min-height: 10vw; max-width: 20vw; max-height: 20vw;">
