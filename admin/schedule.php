@@ -29,6 +29,17 @@
         </Script>
         <?php
     }
+
+    if(isset($_POST["submit2"])) {
+        $kk = $_POST["kk"];
+        $del = "DELETE FROM `movie_sch2` WHERE `id` = $kk";
+        $del_result = mysqli_query($db, $del);
+        ?>
+        <Script>
+            window.location.assign("./schedule.php");
+        </Script>
+        <?php
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -224,7 +235,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
+                            <div class="table-responsive"> 
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -236,6 +247,7 @@
                                             <th class="col">Total Seats</th>
                                             <th class="col">Available Seats</th>
                                             <th scope="col" style="visibility: hidden;">EDIT</th>
+                                            <th scope="col" style="visibility: hidden;">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -288,11 +300,35 @@
                                                 <?php echo $row[6]; ?>
                                             </td>
                                             <td class="align-middle"> <a href="schedule_edit.php?id=<?php echo $row[0]; ?>"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
+                                            <td class="align-middle"> <span type="button" data-bs-toggle="modal" data-bs-target="#k<?php echo $i; ?>" class="badge bg-danger rounded-pill badge-sm">DELETE</span> </td>
                                         </tr>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="k<?php echo $i; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-secondary">
+                                                    <form action="#" method="post">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="staticBackdropLabel">Delete Theater</h4>
+                                                            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="bg-secondary p-4">
+                                                                <h5 class="text-center">ARE YOU SURE YOU WANT TO DELETE THIS SCHEDULE?</h5>
+                                                                <input type="hidden" name="kk" value="<?php echo $row[0]; ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" name="submit2" class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <?php                                                    
                                                 }
                                             }
-                                        ?>
+                                        ?>                                        
                                     </tbody>
                                 </table>
                             </div>
