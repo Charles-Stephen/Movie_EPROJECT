@@ -61,7 +61,7 @@
                      <div class="row">
                          <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
                              <div class="row">
-                                 <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw;">Contact Form</h1>
+                                 <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Contact Form</h1>
                                  <form action="#" class="mt-5 contact-form">
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
