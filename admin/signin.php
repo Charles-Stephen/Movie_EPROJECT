@@ -18,7 +18,7 @@ session_start();
           setcookie("username",'');
           setcookie("password",'');
         }
-      $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Pass` = '$pass'";
+      $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Pass` = '$pass' && `user_type` = 0";
       $result = mysqli_query($db, $sel);
       if(mysqli_num_rows($result)) {
         while($row = mysqli_fetch_array($result)) {
