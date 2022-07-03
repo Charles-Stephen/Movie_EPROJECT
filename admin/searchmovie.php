@@ -90,9 +90,9 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex" action="#" method="post">
+                    <input class="form-control me-2" name="mysearch" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" name="sbt" type="submit">Search</button>
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">                    
                     <div class="nav-item dropdown">
@@ -113,47 +113,44 @@
             <div class="container-fluid pt-4 px-4">
                 <h1 class="text-center">Movies</h1>
                 <div class="row g-4 mt-4 p-3 bg-secondary">    
-                <?php
-                    $sel = "SELECT * FROM `allmovies`";
-                    $result = mysqli_query($db, $sel);
-                    if(mysqli_num_rows($result)) {
-                        while($row = mysqli_fetch_array($result)) {
+                <?php            
+                    if(isset($_POST["sbt"])) {
+                        $chmovie = $_POST["mysearch"];
+                        $sel = "SELECT * FROM `allmovies` WHERE `movie_name` LIKE '%$chmovie%'";
+                        $result = mysqli_query($db, $sel);
+                    }
+                    $i = 0;
+                        while($row = mysqli_fetch_array($result)) {                                                    
+                            $i++;
                 ?>
                     <div class="col-12">
                         <div class="card mb-3 rounded border border-5 border-dark bg-secondary">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                    <div class="align-self-center"><img src="./profile/<?php echo $row[1]; ?>" class="img-fluid w-100" alt="..."></div>
                                 </div>
                                 <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                    <table class="table table-dark">
-                                        <tbody>                                    
-                                            <tr>
-                                                <th scope="col">Name</th>
-                                                <td><?php echo $row[2]; ?></td>
-                                            </tr> 
-                                            <tr>
-                                                <th scope="col">Description</th>
-                                                <td><?php echo $row[4]; ?></td>
-                                            </tr> 
-                                            <tr>
-                                                <th scope="col">Genre</th>
-                                                <td><?php echo $row[5]; ?></td>
-                                            </tr>       
-                                            <tr>
-                                                <th scope="col">Country</th>
-                                                <td><?php echo $row[6]; ?></td>
-                                            </tr>                      
-                                            <tr>
-                                                <th scope="col">Cast</th>
-                                                <td><?php echo $row[7]; ?></td>
-                                            </tr>                                                                  
-                                        </tbody>
-                                    </table>
+                                    <h5 class="card-title"><?php echo $row[2]; ?></h5>
+                                    <p class="card-text"><b class="text-white">Descpriction:</b> <?php echo $row[4]; ?></p>
+                                    <p class="card-text"><b class="text-white">Genre:</b> <?php echo $row[5]; ?></p>
+                                    <p class="card-text"><b class="text-white">Country:</b> <?php echo $row[6]; ?></p>
+                                    <p class="card-text"><b class="text-white">Cast:</b> <?php echo $row[7]; ?></p>
+                                    <span type="button" data-bs-toggle="modal" data-bs-target="#k<?php echo $i; ?>" class="badge rounded-pill badge-sm btn btn-outline-warning">TRAILOR <i class="fas fa-play"></i></span>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="k<?php echo $i; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content bg-transparent">
+                                                <div class="modal-header">
+                                                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <video width="854" height="480" controls src="movievideo/<?php echo $row[3]; ?>"></video>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
                                 </div>
                             </div>
@@ -161,7 +158,6 @@
                     </div>
                 <?php
                         }
-                    }
                 ?>
                 </div>
             </div>
