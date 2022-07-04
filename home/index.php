@@ -54,7 +54,6 @@
  <body>
      <?php
          include_once("nav.php");
-         $db = mysqli_connect("localhost", "root", "", "my_movie");
         ?>  
      <div class="main home-4">
           <!-- slider section -->
@@ -132,20 +131,14 @@
                          <div class="tab-contents">
                              <div id="latestmovie" class="tab-pane fade active in" role="tabpanel">
                                  <div class="category-slide2">
-                                    <?php
-                                        $sel = "SELECT * FROM `allmovies`";
-                                        $result = mysqli_query($db, $sel);
-                                        if(mysqli_num_rows($result)) {                                            
-                                            while($row = mysqli_fetch_array($result)) {                                                                                                    
-                                    ?>
                                      <div class="item">
-                                        <div class="movie-item-contents gradient3 h-100">
-                                            <img src="../admin/profile/<?php echo $row[1]; ?>" style="height: 30vw;" alt="">
+                                        <div class="movie-item-contents gradient3">
+                                            <img src="images/cat/home-3/1.jpg" alt="">
                                             <div class="movie-item-content">
                                                 <div class="movie-item-content-top">
-                                                    <!-- <div class="pull-left">
+                                                    <div class="pull-left">
                                                         <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div> -->
+                                                    </div>
                                                     <div class="pull-right">
                                                         <div class="movie-ratting">
                                                             <a href="#"><span class="fa fa-star"></span>2/20</a>
@@ -153,7 +146,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="movie-item-content-center">
-                                                    <!-- <video width="854" height="480" controls src="movievideo/<?php echo $row[3]; ?>"></video> -->
                                                     <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
                                                 </div>
                                                 <div class="movie-item-content-buttom">
@@ -183,11 +175,7 @@
                                             </div>
                                         </div>
                                      </div>
-                                    <?php
-                                            }
-                                        }
-                                    ?>
-                                     <!-- <div class="item">
+                                     <div class="item">
                                          <div class="movie-item-contents gradient3">
                                              <img src="images/cat/home-3/2.jpg" alt="">
                                              <div class="movie-item-content">
@@ -318,7 +306,7 @@
                                                  </div>
                                              </div>
                                          </div>
-                                     </div> -->
+                                     </div>
                                  </div>
                              </div>
                              <div id="top-ratings" class="tab-pane fade" role="tabpanel">
