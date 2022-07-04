@@ -15,7 +15,7 @@
              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                  <i class="fa fa-align-justify"></i>
              </button>
-             <a class="navbar-brand" href="index-2.html"><img src="images/mo.png" class="logo" width="70px" alt=""></a>
+             <a class="navbar-brand" href="index.php"><img src="images/mo.png" class="logo" width="70px" alt=""></a>
          </div>
          <!-- End Header Navigation -->
          <!-- Collect the nav links, forms, and other content for toggling -->

@@ -8,8 +8,8 @@
     <meta name="description" content="A Template by themepul.com">
     <meta name="keywords" content="film review, movie, movie database, movie series, presentation, showcase, tv show">
     <meta name="author" content="Themepul">
-    <title>movie | Multipurpose HTML5 template</title>
-    <link href="images/favicon.png" rel="icon" />
+    <title>CMM Movie</title>
+    <link rel="icon" href="../admin/img/signage-removebg-preview.png" type="image/x-icon">
     <!-- bootstrap css -->
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-select.min.css" rel="stylesheet" />
@@ -75,9 +75,9 @@
                                      </div>
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
-                                             <label>SELCT CINEMA</label>
+                                             <label>SELECT THEATER</label>
                                              <select class="form-control">
-                                                 <option>Select Cinema</option>
+                                                 <option>Select Theater</option>
                                                  <option>...</option>
                                              </select>
                                          </div>
@@ -94,11 +94,18 @@
                                      </div>
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
-                                             <label>QUANTITY OF SEAT FOR ADULT</label>
+                                             <label>QUANTITY OF SEAT FOR ADULT</label>                                    
                                              <select class="form-control">
-                                                 <option>Select Seat</option>
-                                                 <option>For Adult</option>
-                                                 <option>For Kid</option>
+                                                 <option>1</option>
+                                                 <option>2</option>
+                                                 <option>3</option>
+                                                 <option>4</option>
+                                                 <option>5</option>
+                                                 <option>6</option>
+                                                 <option>7</option>
+                                                 <option>8</option>
+                                                 <option>9</option>
+                                                 <option>10</option>
                                              </select>
                                          </div>
                                      </div>
@@ -106,9 +113,14 @@
                                          <div class="form-group">
                                              <label>QUANTITY OF SEAT FOR KIDS</label>
                                              <select class="form-control">
-                                                 <option>Select Seat</option>
-                                                 <option>For Adult</option>
-                                                 <option>For Kid</option>
+                                                 <option>1</option>
+                                                 <option>2</option>
+                                                 <option>3</option>
+                                                 <option>4</option>
+                                                 <option>5</option>
+                                                 <option>6</option>
+                                                 <option>7</option>
+                                                 <option>8</option>
                                              </select>
                                          </div>
                                      </div>
