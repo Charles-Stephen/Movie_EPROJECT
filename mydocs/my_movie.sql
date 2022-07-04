@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2022 at 08:06 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jul 04, 2022 at 11:25 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,8 +67,8 @@ CREATE TABLE `allmovies` (
 
 INSERT INTO `allmovies` (`id`, `movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES
 (4, 'Men_in_Black_International_(Official_Film_Poster).png', 'Men in Black: International', 'MEN IN BLACK_ INTERNATIONAL.mp4', 'The Men in Black have expanded to cover the globe but so have the villains of the universe. To keep everyone safe, decorated Agent H and determined rookie M join forces -- an unlikely pairing that just might work. When aliens that can take the form of any human arrive on Earth, H and M embark on a globe-trotting adventure to save the agency -- and ultimately the world -- from their mischievous plans.', 'Action, Comedy, Science fiction', 'United States', 'Chris Hemsworth, Tessa Thompson, Rebecca Ferguson, Kumail Nanjiani, Rafe Spall, Laurent Bourgeois, Larry Bourgeois, Emma Thompson, Liam Neeson'),
-(5, 'download.jpg', '3 Idiots', '3 Idiots.mp4', 'In college, Farhan and Raju form a great bond with Rancho due to his positive and refreshing outlook to life. Years later, a bet gives them a chance to look for their long-lost friend whose existence seems rather elusive.', 'Comedy, Romance, Drama, Coming-of-age story', 'India', '	\nAamir Khan, R. Madhavan, Sharman Joshi, Omi Vaidya, Kareena Kapoor, Boman Irani'),
-(6, 'dk.jpg', 'Housefull 3', 'Housefull 3 Official Trailer _ Watch Full Movie On Eros Now.mp4', 'A father doesn\'t want his three daughters to get married. Three men try to convince the father that they\'re a good fit for his daughters, which leads to hilarious situations.', 'Action, Comedy, Romance', 'India', 'Akshay Kumar, Abhishek Bachchan, Riteish Deshmukh, Jacqueline Fernandez, Nargis Fakhri, Lisa Haydon, Jackie Shroff'),
+(5, 'd.jpg', '3 Idiots', '3 Idiots.mp4', 'In college, Farhan and Raju form a great bond with Rancho due to his positive and refreshing outlook to life. Years later, a bet gives them a chance to look for their long-lost friend whose existence seems rather elusive.', 'Comedy, Romance, Drama, Coming-of-age story', 'India', '	\nAamir Khan, R. Madhavan, Sharman Joshi, Omi Vaidya, Kareena Kapoor, Boman Irani'),
+(6, 'Capture.jpg', 'Housefull 3', 'Housefull 3 Official Trailer _ Watch Full Movie On Eros Now.mp4', 'A father doesn\'t want his three daughters to get married. Three men try to convince the father that they\'re a good fit for his daughters, which leads to hilarious situations.', 'Action, Comedy, Romance', 'India', 'Akshay Kumar, Abhishek Bachchan, Riteish Deshmukh, Jacqueline Fernandez, Nargis Fakhri, Lisa Haydon, Jackie Shroff'),
 (7, '751439158406x600_38.jpg', 'Train To Busan 2016', 'TRAIN TO BUSAN Official Trailer _ In Cinemas 04.08.2016.mp4', 'A man (Gong Yoo), his estranged daughter and other passengers become trapped on a speeding train during a zombie outbreak in South Korea.', 'Zombie, Horror, Action, Thriller, Disaster, Adventure, Mystery, Drama', 'South Korea (English sub)', '	\r\nGong Yoo, Jung Yu-mi, Ma Dong-seok, Kim Su-an, Choi Woo-shik, Ahn So-hee, Kim Eui-sung'),
 (8, 'kungfu.jpg', 'Kung Fu Panda', 'Kung Fu Panda - Official® Trailer 1 [HD].mp4', 'Po might just be the laziest, clumsiest panda in the Valley of Peace, but he secretly dreams of becoming a kung fu legend. When the villainous snow leopard Tai Lung threatens Po\'s homeland, the hapless panda is chosen to fulfil an ancient prophecy and defend the Valley from attack. Training under Master Shifu, Po embarks on an epic high-kicking adventure as he sets out to thwart Tai Lung\'s evil plans. A DreamWorks animation.', 'Action, Children\'s film, Comedy, Martial arts, Adventure, Animation, martial heroes', 'America', 'Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, Dan Fogler, Michael Clarke Duncan, Jackie Chan');
 
@@ -91,7 +91,8 @@ CREATE TABLE `complaints` (
 --
 
 INSERT INTO `complaints` (`id`, `name`, `email`, `subject`, `message`) VALUES
-(2, 'Ellie', 'ellie@gmail.com', 'Complaint', 'The movie was behind the scheduled time');
+(2, 'Ellie', 'ellie@gmail.com', 'Complaint', 'The movie was behind the scheduled time'),
+(4, 'Ali', 'a@gmail.com', 'Test', 'Testing');
 
 -- --------------------------------------------------------
 
@@ -362,7 +363,7 @@ ALTER TABLE `allmovies`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kids_package`
