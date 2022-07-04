@@ -53,6 +53,7 @@
  <body>
      <?php
          include_once("nav.php");
+        $db = mysqli_connect("localhost", "root", "", "my_movie");
         ?>  
      <div class="main page-template">
          <div class="inner-page">
@@ -67,9 +68,31 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label>SELECT MOVIE</label>
-                                             <select class="form-control">
+                                             <select id="ghtf" class="form-control">
                                                  <option>Select Movie</option>
-                                                 <option>...</option>
+                                                 <?php
+                                                    $sel = "SELECT * FROM `allmovies`";
+                                                    $result = mysqli_query($db, $sel);
+                                                    if(mysqli_num_rows($result)) {
+                                                        while($row = mysqli_fetch_array($result)) {
+                                                 ?>                        
+                                                 <option onclick="mv()" value="<?php echo $row[0]; ?>">
+                                                    <?php echo $row[2]; ?>
+                                                </option>
+                                                <script>
+                                                    function mv() {                
+                                                            <?php
+                                                                $k = document.getElementById('ghtf');
+                                                                $b = select.options[select.selectedIndex].value;;
+                                                                $sel2 = "SELECT * FROM `movie_sch2` WHERE `movie_id` = $b";
+                                                                $result2 = mysqli_query($db, $sel2);
+                                                            ?>
+                                                        }
+                                                </script>
+                                                 <?php
+                                                        }
+                                                    }
+                                                 ?>
                                              </select>
                                          </div>
                                      </div>
@@ -78,7 +101,15 @@
                                              <label>SELCT CINEMA</label>
                                              <select class="form-control">
                                                  <option>Select Cinema</option>
-                                                 <option>...</option>
+                                                 <?php
+                                                    if(mysqli_num_rows($result2)) {
+                                                        while($row2 = mysqli_fetch_array($result2)) {                      
+                                                 ?>
+                                                 <option><?php echo $row2[3]; ?></option>
+                                                 <?php
+                                                        }
+                                                    }
+                                                 ?>
                                              </select>
                                          </div>
                                      </div>
