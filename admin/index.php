@@ -112,7 +112,6 @@
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Profile</h6>
                             <table class="table table-dark">
-
                                 <tbody>
                                     <?php
                                         $myname = $_SESSION["name"];
@@ -155,7 +154,7 @@
                 <div class="row g-4">                    
                     <div class="col-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Complaints</h6>
+                            <h6 class="mb-4">Contact</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>

@@ -8,8 +8,8 @@
     <meta name="description" content="A Template by themepul.com">
     <meta name="keywords" content="film review, movie, movie database, movie series, presentation, showcase, tv show">
     <meta name="author" content="Themepul">
-    <title>movie | Multipurpose HTML5 template</title>
-    <link href="images/favicon.png" rel="icon" />
+    <title>CMM Movie</title>
+    <link rel="icon" href="../admin/img/signage-removebg-preview.png" type="image/x-icon">
     <!-- bootstrap css -->
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-select.min.css" rel="stylesheet" />

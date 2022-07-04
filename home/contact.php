@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
  <html lang="en">
  <!-- Mirrored from movie.themepul.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:07:17 GMT -->
@@ -8,8 +11,8 @@
     <meta name="description" content="A Template by themepul.com">
     <meta name="keywords" content="film review, movie, movie database, movie series, presentation, showcase, tv show">
     <meta name="author" content="Themepul">
-    <title>movie | Multipurpose HTML5 template</title>
-    <link href="images/favicon.png" rel="icon" />
+    <title>CMM Movie</title>
+    <link rel="icon" href="../admin/img/signage-removebg-preview.png" type="image/x-icon">
     <!-- bootstrap css -->
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-select.min.css" rel="stylesheet" />
@@ -62,33 +65,32 @@
                          <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
                              <div class="row">
                                  <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Contact Form</h1>
-                                 <form action="#" class="mt-5 contact-form">
+                                 <form action="#" class="mt-5 contact-form" method="post">
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label>Name</label>
-                                             <input class="form-control" placeholder="Name" type="text" required="">
+                                             <input type="text" class="form-control" placeholder="Name" required="" name="name">
                                          </div>
                                      </div>
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label>E-mail</label>
-                                             <input class="form-control" placeholder="example@gmail.com" required="" type="email">
+                                             <input type="email" class="form-control" placeholder="example@gmail.com" required="" name="email">
                                          </div>
                                      </div>
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label for="email">Subject</label>
-                                             <input class="form-control" placeholder="Message tittle/Complaint" required="" type="text">
+                                             <input type="text" class="form-control" placeholder="Message tittle/Complaint" required="" name="sub">
                                          </div>
                                      </div>
                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                          <div class="form-group">
                                              <label for="message">Message</label>
-                                             <textarea id="message" class="form-control form-message" cols="10" rows="10" name="message" placeholder="Message" required=""></textarea>
+                                             <textarea id="message" class="form-control form-message" cols="10" rows="10" name="msg" placeholder="Message" required=""></textarea>
                                          </div>
                                          <div class="submit-button">
-                                             <input type="submit" class="btn btn-success"  value="Submit">
-                                             
+                                             <input type="submit" class="btn btn-success"  value="Submit" name="submit">
                                          </div>
                                      </div>
                                  </form>
@@ -119,3 +121,25 @@
  </body>
  <!-- Mirrored from movie.themepul.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:07:17 GMT -->
 </html>
+
+<?php
+ if(isset($_POST["submit"]))
+   {
+     $Name = $_POST["name"];
+     $Email = $_POST["email"];
+     $Subject = $_POST["sub"];
+     $Message = $_POST["msg"];
+
+     $db = mysqli_connect("localhost", "root", "", "my_movie");
+     $cmp = "INSERT INTO `complaints`(`id`, `name`, `email`, `subject`, `message`) VALUES (Null,'$Name','$Email','$Subject','$Message')";
+     $result3 = mysqli_query($db, $cmp);
+     $cp = mysqli_num_rows($result3);
+     if($cp) 
+       {
+         while($row3 = mysqli_fetch_array($result3)) 
+         {   
+            header("Location:../admin/index.php");
+         }
+        }
+    }
+?>

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $db = mysqli_connect("localhost", "root", "", "my_movie");
+?>
 <!doctype html>
  <html lang="en">
 
@@ -9,8 +13,8 @@
      <meta name="description" content="A Template by themepul.com">
      <meta name="keywords" content="film review, movie, movie database, movie series, presentation, showcase, tv show">
      <meta name="author" content="Themepul">
-     <title>movie | Multipurpose HTML5 template</title>
-     <link href="images/favicon.png" rel="icon" />
+     <title>CMM Movie</title>
+    <link rel="icon" href="../admin/img/signage-removebg-preview.png" type="image/x-icon">
      <!-- bootstrap css -->
      <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
      <link href="css/bootstrap-select.min.css" rel="stylesheet" />
@@ -117,7 +121,7 @@
              <div class="haddings">
                  <div class="container">
                      <div class="hadding-area">
-                         <h2>Top Rating Movies</h2>
+                         <h2>All Movies</h2>
                          <p>Lorem Ipsum is simply dummy text of the printing and typesettin</p>
                      </div>
                  </div>
@@ -131,9 +135,15 @@
                          <div class="tab-contents">
                              <div id="latestmovie" class="tab-pane fade active in" role="tabpanel">
                                  <div class="category-slide2">
+                                     <!--pic-->
+                                     <?php
+                                          $select = "SELECT * FROM `allmovies`";
+                                         $result3 = mysqli_query($db, $select);
+                                         while($row = mysqli_fetch_array($result3)){
+                                        ?>
                                      <div class="item">
                                         <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/1.jpg" alt="">
+                                            <img src="../admin/profile/<?php echo $row[1]?>" alt="">
                                             <div class="movie-item-content">
                                                 <div class="movie-item-content-top">
                                                     <div class="pull-left">
@@ -175,680 +185,11 @@
                                             </div>
                                         </div>
                                      </div>
-                                     <div class="item">
-                                         <div class="movie-item-contents gradient3">
-                                             <img src="images/cat/home-3/2.jpg" alt="">
-                                             <div class="movie-item-content">
-                                                 <div class="movie-item-content-top">
-                                                     <div class="pull-left">
-                                                         <span class="movie-count-time hover-left">02.50.20</span>
-                                                     </div>
-                                                     <div class="pull-right">
-                                                         <div class="movie-ratting">
-                                                             <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="movie-item-content-center">
-                                                     <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                 </div>
-                                                 <div class="movie-item-content-buttom">
-                                                     <div class="movie-item-title">
-                                                         <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                     </div>
-                                                     <div class="item-cat">
-                                                         <ul>
-                                                             <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                         </ul>
-                                                         <div class="item-cat-hover">
-                                                             <ul>
-                                                                 <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                 <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                     <div class="movie-item-beta">
-                                                         <div class="movie-details">
-                                                             <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                         </div>
-                                                         <div class="view-movie hover-right">
-                                                             <a class="black-bg" href="#">15k view</a>
-                                                         </div>
-                                                    </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="item">
-                                         <div class="movie-item-contents gradient3">
-                                             <img src="images/cat/home-3/3.jpg" alt="">
-                                             <div class="movie-item-content">
-                                                 <div class="movie-item-content-top">
-                                                     <div class="pull-left">
-                                                         <span class="movie-count-time hover-left">02.50.20</span>
-                                                     </div>
-                                                     <div class="pull-right">
-                                                         <div class="movie-ratting">
-                                                             <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="movie-item-content-center">
-                                                     <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                  </div>
-                                                 <div class="movie-item-content-buttom">
-                                                     <div class="movie-item-title">
-                                                         <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                     </div>
-                                                     <div class="item-cat">
-                                                         <ul>
-                                                             <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                         </ul>
-                                                         <div class="item-cat-hover">
-                                                             <ul>
-                                                                 <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                 <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                     <div class="movie-item-beta">
-                                                         <div class="movie-details">
-                                                             <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                         </div>
-                                                         <div class="view-movie hover-right">
-                                                             <a class="black-bg" href="#">15k view</a>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <div class="item">
-                                         <div class="movie-item-contents gradient3">
-                                             <img src="images/cat/home-3/4.jpg" alt="">
-                                             <div class="movie-item-content">
-                                                 <div class="movie-item-content-top">
-                                                     <div class="pull-left">
-                                                         <span class="movie-count-time hover-left">02.50.20</span>
-                                                     </div>
-                                                     <div class="pull-right">
-                                                         <div class="movie-ratting">
-                                                             <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="movie-item-content-center">
-                                                     <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                 </div>
-                                                 <div class="movie-item-content-buttom">
-                                                     <div class="movie-item-title">
-                                                         <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                     </div>
-                                                     <div class="item-cat">
-                                                         <ul>
-                                                             <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                         </ul>
-                                                         <div class="item-cat-hover">
-                                                             <ul>
-                                                                 <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                 <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                     <div class="movie-item-beta">
-                                                         <div class="movie-details">
-                                                             <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                         </div>
-                                                         <div class="view-movie hover-right">
-                                                             <a class="black-bg" href="#">15k view</a>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
+                                     <?php
+                                         }
+                                     ?>
                                  </div>
                              </div>
-                             <div id="top-ratings" class="tab-pane fade" role="tabpanel">
-                                <div class="category-slide2">
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/1.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/2.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/3.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/4.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>
-                             <div id="commingsoon" class="tab-pane fade" role="tabpanel">
-                                <div class="category-slide2">
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/1.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/2.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/3.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/4.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>
-                             <div id="tvseries" class="tab-pane fade" role="tabpanel">
-                                <div class="category-slide2">
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/1.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/2.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/3.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="movie-item-contents gradient3">
-                                            <img src="images/cat/home-3/4.jpg" alt="">
-                                            <div class="movie-item-content">
-                                                <div class="movie-item-content-top">
-                                                    <div class="pull-left">
-                                                        <span class="movie-count-time hover-left">02.50.20</span>
-                                                    </div>
-                                                    <div class="pull-right">
-                                                        <div class="movie-ratting">
-                                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="movie-item-content-center">
-                                                    <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                                </div>
-                                                <div class="movie-item-content-buttom">
-                                                    <div class="movie-item-title">
-                                                        <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                                    </div>
-                                                    <div class="item-cat">
-                                                        <ul>
-                                                            <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                        </ul>
-                                                        <div class="item-cat-hover">
-                                                            <ul>
-                                                                <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                                <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="movie-item-beta">
-                                                        <div class="movie-details">
-                                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                        </div>
-                                                        <div class="view-movie hover-right">
-                                                            <a class="black-bg" href="#">15k view</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                          </div>
                      </div>
                  </div>
@@ -885,7 +226,7 @@
                  <div class="container">
                      <div class="hadding-area">
                          <h2>Latest Movies</h2>
-                         <p>Lorem Ipsum is simply dummy text of the printing and typesettin</p>
+                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
                      </div>
                  </div>
              </div>
@@ -896,14 +237,17 @@
                      <div class="row">
                          <div id="toprating">
                              <!-- pic-1 -->
+                             <?php
+                              $select = "SELECT * FROM `allmovies` ORDER BY `id` DESC;";
+                              $result3 = mysqli_query($db, $select);
+                              while($row = mysqli_fetch_array($result3)){
+                             ?>
                              <div class="item">
                                  <div class="movie-item-contents gradient3">
-                                     <img src="images/cat/1.jpg" alt="">
+                                     <img src="../admin/profile/<?php echo $row[1]?>" alt="">
                                      <div class="movie-item-content">
                                          <div class="movie-item-content-top">
-                                             <div class="pull-left">
-                                                 <span class="movie-count-time hover-left">02.50.20</span>
-                                             </div>
+                                           
                                              <div class="pull-right">
                                                  <div class="movie-ratting">
                                                      <a href="#"><span class="fa fa-star"></span>2/20</a>
@@ -940,96 +284,9 @@
                                      </div>
                                  </div>
                              </div>
-                             <!-- pic-2 -->
-                             <div class="item">
-                                 <div class="movie-item-contents gradient3">
-                                     <img src="images/cat/2.jpg" alt="">
-                                     <div class="movie-item-content">
-                                         <div class="movie-item-content-top">
-                                             <div class="pull-left">
-                                                 <span class="movie-count-time hover-left">02.50.20</span>
-                                             </div>
-                                             <div class="pull-right">
-                                                 <div class="movie-ratting">
-                                                     <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="movie-item-content-center">
-                                             <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                         </div>
-                                         <div class="movie-item-content-buttom">
-                                             <div class="movie-item-title">
-                                                 <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                             </div>
-                                             <div class="item-cat">
-                                                 <ul>
-                                                     <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                 </ul>
-                                                 <div class="item-cat-hover">
-                                                     <ul>
-                                                         <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                         <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                             <div class="movie-item-beta">
-                                                 <div class="movie-details">
-                                                     <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                 </div>
-                                                 <div class="view-movie hover-right">
-                                                     <a class="black-bg" href="#">15k view</a>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- pic-3 -->
-                             <div class="item">
-                                 <div class="movie-item-contents gradient3">
-                                     <img src="images/cat/3.jpg" alt="">
-                                     <div class="movie-item-content">
-                                         <div class="movie-item-content-top">
-                                             <div class="pull-left">
-                                                 <span class="movie-count-time hover-left">02.50.20</span>
-                                             </div>
-                                             <div class="pull-right">
-                                                 <div class="movie-ratting">
-                                                     <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="movie-item-content-center">
-                                             <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                         </div>
-                                         <div class="movie-item-content-buttom">
-                                             <div class="movie-item-title">
-                                                 <a href="#">Hurry Animate Blue Strack New Movie (2018)</a>
-                                             </div>
-                                             <div class="item-cat">
-                                                 <ul>
-                                                     <li><span>Category :</span><a href="#">English Movies</a></li>
-                                                 </ul>
-                                                 <div class="item-cat-hover">
-                                                     <ul>
-                                                         <li><span>Release :</span><a href="#">October 26, 2017</a></li>
-                                                         <li><span>Genre :</span><a href="#">Action, Drama</a></li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                             <div class="movie-item-beta">
-                                                 <div class="movie-details">
-                                                     <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                                 </div>
-                                                 <div class="view-movie hover-right">
-                                                     <a class="black-bg" href="#">15k view</a>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
+                             <?php
+                              }
+                             ?>
                          </div>
                      </div>
                  </div>
