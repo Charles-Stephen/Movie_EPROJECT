@@ -52,7 +52,7 @@
 
  <body>
      <?php
-             session_start();
+        session_start();
          include_once("nav.php");
         $db = mysqli_connect("localhost", "root", "", "my_movie");
         ?>  
@@ -65,11 +65,11 @@
                              <div class="row">
                                  <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Book Your Tickets</h1>
                                  <span style=" color:red;"><h2>Available Tickets</h2></span>
-                                 <form action="#" class="mt-5 contact-form">
+                                 <form action="#" class="mt-5 contact-form" method="post">
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label>SELECT MOVIE</label>
-                                             <select onchange="this.form.submit();" id="ghtf" name ="myselmov" class="form-control">
+                                             <select  id="movie" name ="myselmov" class="form-control">
                                                  <option>Select Movie</option>
                                                  <?php
                                                     $sel = "SELECT * FROM `allmovies`";
@@ -92,29 +92,8 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">              
                                              <label>SELCT CINEMA</label>                                             
-                                             <select class="form-control">
+                                             <select class="form-control" id="cinema">
                                                  <option>Select Cinema</option>
-                                                 <?php                                                                                        
-                                                    $_SESSION["chmovie"] = $_GET[myselmov];
-                                                    $chmovie = $_SESSION["chmovie"];
-                                                    $sel2 = "SELECT * FROM `movie_sch2` WHERE `movie_id` = $chmovie";
-                                                    $result2 = mysqli_query($db, $sel2);                                                
-                                                    if(mysqli_num_rows($result2)) {
-                                                        while($row2 = mysqli_fetch_array($result2)) {                      
-                                                 ?>
-                                                 <option>
-                                                    <?php 
-                                                        $sel3 = "SELECT * FROM `theater` WHERE `id` = $row2[3]";
-                                                        $result3 = mysqli_query($db, $sel3);                                                        
-                                                        while($row3 = mysqli_fetch_array($result3)) {
-                                                            echo $row3[1];
-                                                        }
-                                                    ?>
-                                                </option>                                                 
-                                                 <?php
-                                                        }
-                                                    }
-                                                 ?>
                                              </select>
                                          </div>
                                      </div>
@@ -151,7 +130,7 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label for="email">SELECT DATE</label>
-                                             <select class="form-control">
+                                             <select class="form-control" id="date">
                                                  <option>Select Date</option>
                                                  <option>...</option>
                                              </select>
@@ -160,7 +139,7 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label for="email">SELECT TIME</label>
-                                             <select class="form-control">
+                                             <select class="form-control" id="mytime">
                                                  <option>Select Time</option>
                                                  <option>...</option>
                                              </select>
@@ -200,6 +179,53 @@
      <script src="js/jquery.mixitup.min.js"></script>
      <script src="js/tab.js"></script>
      <script src="js/main.js"></script>
+     <script>
+        $('#movie').on('change', function() {
+    const id =$(this).find(":selected").val();
+
+    $.ajax({
+  url: "get_cinema_data.php",
+  cache: false,
+  type: "POST",
+  data: {id : id},
+  success: function(html){
+    // alert(html);
+    $('#cinema').html(html);
+  }
+});
+
+});;
+        $('#cinema').on('change', function() {
+    const id =$(this).find(":selected").val();
+
+    $.ajax({
+  url: "get_moviedate_data.php",
+  cache: false,
+  type: "POST",
+  data: {id : id},
+  success: function(html){
+    $('#date').html(html);
+
+  }
+});
+
+});;
+$('#date').on('change', function() {
+    const id =$(this).find(":selected").val();
+
+    $.ajax({
+  url: "get_movietime_data.php",
+  cache: false,
+  type: "POST",
+  data: {id : id},
+  success: function(html){
+    $('#mytime').html(html);
+
+  }
+});
+
+});;
+     </script>
  </body>
  <!-- Mirrored from movie.themepul.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:07:17 GMT -->
 </html>
