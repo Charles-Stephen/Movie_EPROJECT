@@ -1,6 +1,10 @@
 <?php
-    session_start();
-    $db = mysqli_connect("localhost", "root", "", "my_movie");
+ session_start();
+ $db = mysqli_connect("localhost", "root", "", "my_movie");
+ if($_SESSION["name"] == null)
+ {
+    header("Location:./admin/signin.php");
+ }
 ?>
 <!doctype html>
  <html lang="en">
@@ -137,7 +141,7 @@
                                  <div class="category-slide2">
                                      <!--pic-->
                                      <?php
-                                          $select = "SELECT * FROM `allmovies`";
+                                         $select = "SELECT * FROM `allmovies`";
                                          $result3 = mysqli_query($db, $select);
                                          while($row = mysqli_fetch_array($result3)){
                                         ?>
@@ -145,18 +149,18 @@
                                          <div class="movie-item-contents gradient3">
                                              <img src="../admin/profile/<?php echo $row[1]?>" alt="">
                                              <div class="movie-item-content">
-                                                 <!--<div class="movie-item-content-top">
-                                                     <div class="pull-left">
+                                                 <div class="movie-item-content-top">
+                                                     <!--<div class="pull-left">
                                                          <span class="movie-count-time hover-left">02.50.20</span>
-                                                     </div>
+                                                     </div>-->
                                                      <div class="pull-right">
                                                          <div class="movie-ratting">
                                                              <a href="#"><span class="fa fa-star"></span>2/20</a>
                                                          </div>
                                                      </div>
                                                  </div>
-                                                 <div class="movie-item-content-center">
-                                                     <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
+                                                 <!--<div class="movie-item-content-center">
+                                                     <a href="#" class="flat-icons" ><video width="854" height="480" controls src="../admin/movievideo/<?php echo $row[3]; ?>"></video><span class="flaticon-play-button"></span></a>
                                                  </div>-->
                                                  <div class="movie-item-content-buttom">
                                                      <div class="movie-item-title">
@@ -168,6 +172,7 @@
                                                          </ul>
                                                          <div class="item-cat-hover">
                                                              <ul>
+                                                                 <!--<li><span>Release :</span><a href="#">October 26, 2017</a></li>-->
                                                                  <li><span>Genre :</span><a href="#"><?php echo $row[5]?></a></li>
                                                              </ul>
                                                          </div>

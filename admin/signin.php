@@ -14,11 +14,12 @@ session_start();
       if(!empty($_POST["remember"])) {
           setcookie("username",$_POST["email"],time()+ (86400 * 7),'/');
           setcookie("password",$_POST["pass"],time()+ (86400 * 7),'/');
-      } else{
+       } 
+      else{
           setcookie("username",'');
           setcookie("password",'');
         }
-      $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Pass` = '$pass' && `user_type` = 0";
+      $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Pass` = '$pass'";
       $result = mysqli_query($db, $sel);
       if(mysqli_num_rows($result)) {
         while($row = mysqli_fetch_array($result)) {
@@ -26,12 +27,23 @@ session_start();
           $_SESSION["mytype"] = $row[7];
           $_SESSION["profile"] = $row[1];                        
         }
+        if($row[7] == 1)
+        {?>
+            <Script>
+                window.location.assign("./home/index.php");
+            </Script><?php
+        }
+        elseif($row[7] == 0)
+        {
+         $_SESSION["name"] = $row[2];
+         //header("Location : ../admin/index.php");
         ?>
         <Script>
             window.location.assign("./index.php");
         </Script>
         <?php
       }  
+    }
       else {
         $error = "Invalid Email or Password";
       }
