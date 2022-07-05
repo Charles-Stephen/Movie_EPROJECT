@@ -8,7 +8,7 @@
     <meta name="description" content="A Template by themepul.com">
     <meta name="keywords" content="film review, movie, movie database, movie series, presentation, showcase, tv show">
     <meta name="author" content="Themepul">
-    <title>movie | Multipurpose HTML5 template</title>
+    <title>CMM Movie</title>
     <link href="images/favicon.png" rel="icon" />
     <!-- bootstrap css -->
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
@@ -52,6 +52,7 @@
 
  <body>
      <?php
+             session_start();
          include_once("nav.php");
         $db = mysqli_connect("localhost", "root", "", "my_movie");
         ?>  
@@ -68,27 +69,19 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                          <div class="form-group">
                                              <label>SELECT MOVIE</label>
-                                             <select id="ghtf" class="form-control">
+                                             <select onchange="this.form.submit();" id="ghtf" name ="myselmov" class="form-control">
                                                  <option>Select Movie</option>
                                                  <?php
                                                     $sel = "SELECT * FROM `allmovies`";
                                                     $result = mysqli_query($db, $sel);
                                                     if(mysqli_num_rows($result)) {
+                                                        $i = 0;
                                                         while($row = mysqli_fetch_array($result)) {
+                                                            $i++;
                                                  ?>                        
-                                                 <option onclick="mv()" value="<?php echo $row[0]; ?>">
-                                                    <?php echo $row[2]; ?>
-                                                </option>
-                                                <script>
-                                                    function mv() {                
-                                                            <?php
-                                                                $k = document.getElementById('ghtf');
-                                                                $b = select.options[select.selectedIndex].value;;
-                                                                $sel2 = "SELECT * FROM `movie_sch2` WHERE `movie_id` = $b";
-                                                                $result2 = mysqli_query($db, $sel2);
-                                                            ?>
-                                                        }
-                                                </script>
+                                                    <option value="<?php echo $row[0]; ?>">
+                                                        <?php echo $row[2]; ?>                                                                               
+                                                    </option>                                                
                                                  <?php
                                                         }
                                                     }
@@ -97,15 +90,27 @@
                                          </div>
                                      </div>
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                         <div class="form-group">
-                                             <label>SELCT CINEMA</label>
+                                         <div class="form-group">              
+                                             <label>SELCT CINEMA</label>                                             
                                              <select class="form-control">
                                                  <option>Select Cinema</option>
-                                                 <?php
+                                                 <?php                                                                                        
+                                                    $_SESSION["chmovie"] = $_GET[myselmov];
+                                                    $chmovie = $_SESSION["chmovie"];
+                                                    $sel2 = "SELECT * FROM `movie_sch2` WHERE `movie_id` = $chmovie";
+                                                    $result2 = mysqli_query($db, $sel2);                                                
                                                     if(mysqli_num_rows($result2)) {
                                                         while($row2 = mysqli_fetch_array($result2)) {                      
                                                  ?>
-                                                 <option><?php echo $row2[3]; ?></option>
+                                                 <option>
+                                                    <?php 
+                                                        $sel3 = "SELECT * FROM `theater` WHERE `id` = $row2[3]";
+                                                        $result3 = mysqli_query($db, $sel3);                                                        
+                                                        while($row3 = mysqli_fetch_array($result3)) {
+                                                            echo $row3[1];
+                                                        }
+                                                    ?>
+                                                </option>                                                 
                                                  <?php
                                                         }
                                                     }
@@ -114,7 +119,7 @@
                                          </div>
                                      </div>
                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                         <div class="form-group">
+                                         <div class="form-group">                                         
                                              <label>SELECT  SEAT CATEGORY</label>
                                              <select class="form-control">
                                                  <option>Select Seat Category</option>
