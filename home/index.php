@@ -3,7 +3,7 @@
  $db = mysqli_connect("localhost", "root", "", "my_movie");
  if($_SESSION["name"] == null)
  {
-    header("Location:./admin/signin.php");
+    header("Location:../admin/signin.php");
  }
 ?>
 <!doctype html>
@@ -147,7 +147,7 @@
                                         ?>
                                      <div class="item">
                                          <div class="movie-item-contents gradient3">
-                                             <img src="../admin/profile/<?php echo $row[1]?>" alt="">
+                                             <img src="../admin/profile/<?php echo $row[1]?>" style="height: 30vw;" alt="">
                                              <div class="movie-item-content">
                                                  <div class="movie-item-content-top">
                                                      <!--<div class="pull-left">

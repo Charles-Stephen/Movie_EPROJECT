@@ -9,7 +9,7 @@ echo $sel;
 $result = mysqli_query($db, $sel);
 while($row = mysqli_fetch_array($result)) { ?>
 <option value="0">Please Select</option>
-<option value="<?php echo $row['id']; ?>"><?php echo $row['movie_date']; ?></option>
+<option value="<?php echo $row['id']; ?>"><?php echo $row['time']; ?></option>
 <?php 
 }
 exit();

@@ -27,22 +27,23 @@ session_start();
           $_SESSION["mytype"] = $row[7];
           $_SESSION["profile"] = $row[1];                        
         }
-        if($row[7] == 1)
-        {?>
-            <Script>
-                window.location.assign("./home/index.php");
-            </Script><?php
-        }
-        elseif($row[7] == 0)
+
+        if ($_SESSION["mytype"] == 0)
         {
-         $_SESSION["name"] = $row[2];
-         //header("Location : ../admin/index.php");
-        ?>
-        <Script>
-            window.location.assign("./index.php");
-        </Script>
-        <?php
-      }  
+            ?>
+            <Script>
+                window.location.assign("./index.php");
+            </Script>            
+            <?php
+        }
+        else
+        {
+            ?>
+            <Script>
+                window.location.assign("../home/index.php");
+            </Script>
+            <?php
+        }  
     }
       else {
         $error = "Invalid Email or Password";
