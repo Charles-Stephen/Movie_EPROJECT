@@ -1,20 +1,20 @@
 <?php
 session_start();
  
-    if ($_SESSION["mytype"] == 0) {
+    // if(isset($_SESSION["mytype"]) == 0) {
         ?>
             <Script>
-                window.location.assign("./index.php");
+                // window.location.assign("./index.php");
             </Script>            
         <?php
-    }
-    if ($_SESSION["mytype"] == 1) {
+    // }
+    // else if(isset($_SESSION["mytype"]) == 1) {
         ?>
-            <Script>
-                window.location.assign("../home/index.php");
-            </Script>            
+            <!-- <Script> -->
+                <!-- window.location.assign("../home/index.php"); -->
+            <!-- </Script>             -->
         <?php
-    }
+    // }
   $db = mysqli_connect("localhost", "root", "", "my_movie");
 
   if (isset($_POST["login"])) {                    
