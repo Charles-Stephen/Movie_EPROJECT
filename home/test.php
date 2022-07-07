@@ -63,78 +63,7 @@
         <div class="inner-page">
             <div class="celebrities-page pt-75 pb-75">
                 <div class="container">
-                    <div class="row p-4" style="margin-top: 3vw; margin-bottom: 3vw;">
-                    <h1 class="mb-3" style="color: white;">Search " <?php echo $_SESSION["srch"]; ?> "</h1>
-                    <!-- <form class="ms-auto form-inline" action="test2.php" method="post">
-                        <input class="form-control me-2" name="mysearch" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-danger" name="sbt" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form> -->
-                    <?php
-                      if(isset($_POST["sbt"])) {
-                          $chmovie = $_POST["mysearch"];
-                          $_SESSION["srch"] = $chmovie;
-                          $sel = "SELECT * FROM `allmovies` WHERE `movie_name` LIKE '%$chmovie%'";
-                          $result = mysqli_query($db, $sel);
-                      }
-                      $i = 0;
-                      while($row = mysqli_fetch_array($result)) {                                                    
-                          $i++;
-                    ?>
-                      <div class="panel panel-default">
-                        <div class="panel-body">
-                          <div class="item col-sm-10 col-md-4 col-lg-4">
-                            <div class="movie-item-contents gradient3">
-                                <img src="../admin/profile/<?php echo $row[1]?>" alt="">
-                                <div class="movie-item-content">
-                                    <div class="movie-item-content-top">
-                                        <div class="pull-right">
-                                            <div class="movie-ratting">
-                                                <a href="#"><span class="fa fa-star"></span>2/20</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="movie-item-content-center">
-                                        <a href="#" class="flat-icons" style="" data-video-url="<?php echo $row[3]; ?>"><span class="flaticon-play-button"></span></a>
-                                    </div>
-                                    <div class="movie-item-content-buttom">
-                                        <div class="movie-item-title">
-                                            <!-- <a href="#"><?php echo $row[2]?></a> -->
-                                        </div>
-                                        <div class="item-cat">
-                                            <!-- <ul>
-                                                <li><span>Category :</span><a href="#"><?php echo $row[6]?></a></li>
-                                            </ul>
-                                            <div class="item-cat-hover">
-                                                <ul>
-                                                    <li><span>Genre :</span><a href="#"><?php echo $row[5]?></a></li>
-                                                </ul>
-                                            </div> -->
-                                        </div>
-                                        <div class="movie-item-beta">
-                                            <!-- <div class="movie-details">
-                                                <a href="#" class="btn btn-button button-detals black-bg">details</a>
-                                            </div>
-                                            <div class="view-movie hover-right">
-                                                <a class="black-bg" href="#">15k view</a>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                          <ul class="list-group col-sm-10 col-md-8 col-lg-8">
-                              <li class="list-group-item"><h3><b><?php echo $row[2]; ?></b></h3></li>
-                              <li class="list-group-item"><b class="text-white">Descpriction:</b> <?php echo $row[4]; ?></li>
-                              <li class="list-group-item"><b class="text-white">Genre:</b> <?php echo $row[5]; ?></li>
-                              <li class="list-group-item"><b class="text-white">Country:</b> <?php echo $row[6]; ?></li>
-                              <li class="list-group-item"><b class="text-white">Cast:</b> <?php echo $row[7]; ?></li>
-                          </ul>
-                        </div>
-                      </div>
-                    <?php
-                      }
-                    ?>
-                    </div>
+                    
                 </div>
             </div>
         </div>

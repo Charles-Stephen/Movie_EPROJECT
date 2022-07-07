@@ -137,18 +137,10 @@
                                     <h4>Edit Schedule</h4>
                                 </div>
                                     <div class="bg-secondary rounded h-100">                                                                                        
-                                        <select class="form-select form-select-lg mb-3" name="playdate" aria-label="Default select example">
-                                            <option selected>Select Date</option>
-                                            <?php
-                                                if(mysqli_num_rows($dt_rs)) {
-                                                    while($row = mysqli_fetch_array($dt_rs)) {
-                                            ?>
-                                            <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
-                                            <?php
-                                                    }
-                                                }
-                                            ?>
-                                        </select>
+                                        <div class="form-floating mb-3">
+                                            <input type="date" name="playdate" class="bg-dark form-control" id="floatingPassword" placeholder="Country">
+                                            <label for="floatingPassword">Date</label>
+                                        </div> 
                                         
                                         <select class="form-select form-select-lg mb-3" name="playtime" aria-label="Default select example">
                                             <option selected>Select Time</option>

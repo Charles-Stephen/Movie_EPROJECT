@@ -12,8 +12,8 @@
     }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
     
-    $dt = "SELECT * FROM `movie_schedule`";
-    $dt_rs = mysqli_query($db, $dt);
+    // $dt = "SELECT * FROM `movie_schedule`";
+    // $dt_rs = mysqli_query($db, $dt);
     $tm = "SELECT * FROM `movie_time`";
     $tm_rs = mysqli_query($db, $tm);
     $thr = "SELECT * FROM `theater`";
@@ -171,18 +171,10 @@
                                             <div class="modal-body">
                                                 <div class="bg-secondary rounded h-100 p-4">                                                    
                                                 
-                                                    <select class="form-select form-select-lg mb-3" name="playdate" aria-label="Default select example">
-                                                        <option selected>Select Date</option>
-                                                        <?php
-                                                            if(mysqli_num_rows($dt_rs)) {
-                                                                while($row = mysqli_fetch_array($dt_rs)) {
-                                                        ?>
-                                                        <option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
-                                                        <?php
-                                                                }
-                                                            }
-                                                        ?>
-                                                    </select>
+                                                    <div class="form-floating mb-3">
+                                                        <input type="date" name="playdate" class="bg-dark form-control" id="floatingPassword" placeholder="Country">
+                                                        <label for="floatingPassword">Date</label>
+                                                    </div> 
                                                     
                                                     <select class="form-select form-select-lg mb-3" name="playtime" aria-label="Default select example">
                                                         <option selected>Select Time</option>
@@ -270,10 +262,10 @@
                                             <td class="align-middle" scope="row"><?php echo $i; ?></td>
                                             <td class="align-middle">
                                                 <?php
-                                                    $sel1 = "SELECT * FROM `movie_schedule` WHERE `id` = $row[1];";
-                                                    $result1 = mysqli_query($db, $sel1);
-                                                    $row1 = mysqli_fetch_array($result1);
-                                                    echo $row1[1];
+                                                    // $sel1 = "SELECT * FROM `movie_schedule` WHERE `id` = $row[1];";
+                                                    // $result1 = mysqli_query($db, $sel1);
+                                                    // $row1 = mysqli_fetch_array($result1);
+                                                    echo $row[1];
                                                 ?>
                                             </td>
                                             <td class="align-middle">
