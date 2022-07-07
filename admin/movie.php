@@ -16,12 +16,15 @@
         $name = $_POST["name"];
         $name = mysqli_real_escape_string($db,$name);
 
-        $filename1 = $_FILES["myvd"]["name"];
-        $vdname = $filename1;
-        $tmpname1 = $_FILES["myvd"]["tmp_name"];
-        $path1 = "./movievideo/" . $vdname;
-        move_uploaded_file($tmpname1, $path1);
-        $trailor = $vdname;
+        // $filename1 = $_FILES["myvd"]["name"];
+        // $vdname = $filename1;
+        // $tmpname1 = $_FILES["myvd"]["tmp_name"];
+        // $path1 = "./movievideo/" . $vdname;
+        // move_uploaded_file($tmpname1, $path1);
+        // $trailor = $vdname;
+
+        $trailor = $_POST["trailor"];
+        $trailor = mysqli_real_escape_string($db,$trailor);
 
         $descp = $_POST["descp"];
         $descp = mysqli_real_escape_string($db,$descp);
@@ -188,11 +191,15 @@
                                                         <label for="floatingInput">Movie Name</label>
                                                     </div>
                                                     
-                                                    <div class="mb-3">
+                                                    <!-- <div class="mb-3">
                                                         <label for="formFile" class="form-label">Upload Trailor</label>
                                                         <input class="form-control bg-dark" name="myvd" type="file" id="formFile">
-                                                    </div>
+                                                    </div> -->
 
+                                                    <div class="form-floating mb-3">
+                                                        <textarea class="form-control" placeholder="Add Description" name="trailor" id="floatingTextarea" style="height: 150px;"></textarea>
+                                                        <label for="floatingTextarea">Trailor</label>
+                                                    </div>
                                                     <div class="form-floating mb-3">
                                                         <textarea class="form-control" placeholder="Add Description" name="descp" id="floatingTextarea" style="height: 150px;"></textarea>
                                                         <label for="floatingTextarea">Description</label>
@@ -226,7 +233,6 @@
                                             <th class="col">#</th>
                                             <th scope="col">Cover</th>
                                             <th class="col">Name</th>
-                                            <th class="col">Trailer</th>
                                             <th class="col">Genre</th>
                                             <th scope="col" style="visibility: hidden;">Details</th>
                                             <th scope="col" style="visibility: hidden;">EDIT</th>
@@ -244,27 +250,7 @@
                                         <tr>
                                             <td class="align-middle" scope="row"><?php echo $i; ?></td>
                                             <td class="align-middle"><img src="profile/<?php echo $row[1]; ?>" style="height: 3vw;" alt=""></td>
-                                            <td class="align-middle"><?php echo $row[2]; ?></td>
-                                            <td class="align-middle">
-                                                <!-- Button trigger modal -->
-                                                <div type="button" data-bs-toggle="modal" data-bs-target="#k<?php echo $i; ?>">
-                                                    <i class="fas fa-play-circle fa-2x"></i>
-                                                </div>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="k<?php echo $i; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-xl">
-                                                        <div class="modal-content bg-transparent">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body text-center">
-                                                                <video width="854" height="480" controls src="movievideo/<?php echo $row[3]; ?>"></video>
-                                                            </div>
-                                                        </div>
-                                                    </div> 
-                                                </div>
-                                            </td>
+                                            <td class="align-middle"><?php echo $row[2]; ?></td>                                            
                                             <td class="align-middle"><?php echo $row[5]; ?></td>
                                             <td class="align-middle"> <a href="movie_detail.php?id=<?php echo $row[0]; ?>"><span class="badge bg-light rounded-pill badge-sm">DETAILS</span></a> </td>
                                             <td class="align-middle"> <a href="movie_edit.php?id=<?php echo $row[0]; ?>"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>

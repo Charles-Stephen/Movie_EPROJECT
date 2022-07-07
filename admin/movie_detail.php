@@ -41,6 +41,37 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+
+
+
+<!-- try -->
+
+     <!-- owl carousel css -->
+     <link href="../home/assets/owlcarousel/owl.carousel.css" rel="stylesheet" />
+     <!-- / owl carousel css -->
+     <!--  icon css -->
+     <!-- <link href="../home/css/font-awesome.min.css" rel="stylesheet" /> -->
+     <link href="../home/css/flaticon.css" rel="stylesheet" />
+     <!-- <link href="../home/css/icofont.css" rel="stylesheet" /> -->
+     <!-- / icon css -->
+     <!-- animations css -->
+     <link href="../home/assets/animations/animate.css" rel="stylesheet" />
+     <link href="../home/assets/Video/video.popup.css" rel="stylesheet" />
+     <!-- / animations css -->
+     <!-- animations css -->
+     <!-- <link href="../home/assets/navmenu/bootsnav.css" rel="stylesheet" /> -->
+     <!-- / animations css -->
+     <!-- slider css -->
+     <link rel="../home/stylesheet" href="assets/bootstrap-slider/bootstrap-touch-slider.css">
+     <!-- / slider css -->
+     <!--  style css -->
+     <link href="../home/css/style.css" rel="stylesheet" />
+     <!-- / style css -->
+     <!--  media css -->
+     <link href="../home/css/media.css" rel="stylesheet" />
+     <!-- / media css -->
+
 </head>
 
 <body>
@@ -113,7 +144,47 @@
                 <div class="row g-4">                    
                     <h4>Movie Details</h4>
                     <div class="col-sm-12 col-xl-6">
-                        <img src="profile/<?php echo $row[1]; ?>" class="w-100" alt="">
+                    <div class="item">
+                        <div class="movie-item-contents gradient3">
+                            <img src="../admin/profile/<?php echo $row[1]?>" alt="">
+                            <div class="movie-item-content">
+                                <div class="movie-item-content-top">
+                                    <div class="pull-right">
+                                        <div class="movie-ratting">
+                                            <a href="#"><span class="fa fa-star"></span>2/20</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-item-content-center">
+                                    <a href="#" class="flat-icons" style="" data-video-url="<?php echo $row[3]; ?>"><span class="flaticon-play-button"></span></a>
+                                </div>
+                                <div class="movie-item-content-buttom">
+                                    <div class="movie-item-title">
+                                        <!-- <a href="#"><?php echo $row[2]?></a> -->
+                                    </div>
+                                    <div class="item-cat">
+                                        <!-- <ul>
+                                            <li><span>Category :</span><a href="#"><?php echo $row[6]?></a></li>
+                                        </ul>
+                                        <div class="item-cat-hover">
+                                            <ul>
+                                                <li><span>Genre :</span><a href="#"><?php echo $row[5]?></a></li>
+                                            </ul>
+                                        </div> -->
+                                    </div>
+                                    <div class="movie-item-beta">
+                                        <!-- <div class="movie-details">
+                                            <a href="#" class="btn btn-button button-detals black-bg">details</a>
+                                        </div>
+                                        <div class="view-movie hover-right">
+                                            <a class="black-bg" href="#">15k view</a>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- <img src="profile/<?php echo $row[1]; ?>" class="w-100" alt=""> -->
                     </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
@@ -140,24 +211,10 @@
                                     <tr>
                                         <th scope="col">Cast</th>
                                         <td><?php echo $row[7]; ?></td>
-                                    </tr>                                                                  
+                                    </tr>                                    
                                 </tbody>
                             </table>
-                            <span type="button" data-bs-toggle="modal" data-bs-target="#k" class="badge rounded-pill badge-sm btn btn-outline-warning">TRAILOR <i class="fas fa-play"></i></span>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="k" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-xl">
-                                    <div class="modal-content bg-transparent">
-                                        <div class="modal-header">
-                                            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body text-center">
-                                            <video width="854" height="480" controls src="movievideo/<?php echo $row[3]; ?>"></video>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
+                            
                         </div>
                     </div>
                     
@@ -165,7 +222,6 @@
             </div>
             <!-- Profile End -->
 
-          
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -204,6 +260,23 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
+    <!-- try -->
+    <script src="../home/js/jquery-1.12.4.min.js"></script>
+     <script src="../home/assets/bootstrap/bootstrap.min.js"></script>
+     <script src="../home/js/bootstrap-select.js"></script>
+     <script src="../home/assets/navmenu/bootsnav.js"></script>
+     <script src="../home/assets/animations/wow.min.js"></script>
+     <script src="../home/assets/owlcarousel/owl.carousel.min.js"></script>
+     <script src="../home/assets/bootstrap-slider/jquery.touchSwipe.min.js"></script>
+     <script src="../home/assets/bootstrap-slider/bootstrap-touch-slider.js"></script>
+     <script src="../home/assets/jquery-ui/jquery-ui.min.js"></script>
+     <script src="../home/assets/Video/video.popup.js"></script>
+     <script src="../home/js/jquery.syotimer.min.js"></script>
+     <script src="../home/js/jquery.mixitup.min.js"></script>
+     <script src="../home/js/tab.js"></script>
+     <script src="../home/js/main.js"></script>
 </body>
 
 </html>

@@ -143,7 +143,9 @@
                                      <?php
                                          $select = "SELECT * FROM `allmovies`";
                                          $result3 = mysqli_query($db, $select);
+                                         $i = 0;
                                          while($row = mysqli_fetch_array($result3)){
+                                            $i++;
                                         ?>
                                      <div class="item">
                                          <div class="movie-item-contents gradient3">
@@ -159,23 +161,17 @@
                                                          </div>
                                                      </div>
                                                  </div>
-                                                 <!--<div class="movie-item-content-center">
-                                                     <a href="#" class="flat-icons" ><video width="854" height="480" controls src="../admin/movievideo/<?php echo $row[3]; ?>"></video><span class="flaticon-play-button"></span></a>
-                                                 </div>-->
+                                                 <div class="movie-item-content-center">
+                                                    <a href="#" class="flat-icons" data-video-url="<?php echo $row[3]; ?>"><span class="flaticon-play-button"></span></a>
+                                                </div>
                                                  <div class="movie-item-content-buttom">
                                                      <div class="movie-item-title">
                                                          <a href="#"><?php echo $row[2]?></a>
                                                      </div>
                                                      <div class="item-cat">
                                                          <ul>
-                                                             <li><span>Category :</span><a href="#"><?php echo $row[6]?></a></li>
+                                                             <li><span>Country :</span><a href="#"><?php echo $row[6]?></a></li>
                                                          </ul>
-                                                         <div class="item-cat-hover">
-                                                             <ul>
-                                                                 <!--<li><span>Release :</span><a href="#">October 26, 2017</a></li>-->
-                                                                 <li><span>Genre :</span><a href="#"><?php echo $row[5]?></a></li>
-                                                             </ul>
-                                                         </div>
                                                      </div>
                                                      <div class="movie-item-beta">
                                                          <div class="movie-details">
@@ -245,9 +241,9 @@
                              ?>
                              <div class="item">
                                  <div class="movie-item-contents gradient3">
-                                     <img src="../admin/profile/<?php echo $row[1]?>" alt="">
+                                     <img src="../admin/profile/<?php echo $row[1]; ?>" alt="">
                                      <div class="movie-item-content">
-                                         <!--<div class="movie-item-content-top">
+                                         <div class="movie-item-content-top">
                                              <div class="pull-right">
                                                  <div class="movie-ratting">
                                                      <a href="#"><span class="fa fa-star"></span>2/20</a>
@@ -255,22 +251,22 @@
                                              </div>
                                          </div>
                                          <div class="movie-item-content-center">
-                                             <a href="#" class="flat-icons" data-video-url="https://www.youtube.com/watch?v=CsVJoCKc9rA"><span class="flaticon-play-button"></span></a>
-                                         </div>-->
+                                             <a href="#" class="flat-icons" data-video-url="<?php echo $row[3]; ?>"><span class="flaticon-play-button"></span></a>
+                                         </div>
                                          <div class="movie-item-content-buttom">
                                              <div class="movie-item-title">
                                                  <a href="#"><?php echo $row[2]?></a>
                                              </div>
                                              <div class="item-cat">
                                                  <ul>
-                                                     <li><span>Category :</span><a href="#"><?php echo $row[6]?></a></li>
+                                                     <li><span>Country :</span><a href="#"><?php echo $row[6]?></a></li>
                                                  </ul>
-                                                 <div class="item-cat-hover">
-                                                     <ul>
+                                                 <!-- <div class="item-cat-hover">
+                                                     <ul> -->
                                                          <!--<li><span>Release :</span><a href="#">October 26, 2017</a></li>-->
-                                                         <li><span>Genre :</span><a href="#"><?php echo $row[5]?></a></li>
-                                                     </ul>
-                                                 </div>
+                                                         <!-- <li><span>Genre :</span><a href="#"><?php echo $row[5]?></a></li> -->
+                                                     <!-- </ul>
+                                                 </div> -->
                                              </div>
                                              <div class="movie-item-beta">
                                                  <div class="movie-details">
