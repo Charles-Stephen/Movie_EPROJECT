@@ -3,6 +3,13 @@
     if ($_SESSION["name"] == null) {
         header("Location: signin.php");
     }
+    if ($_SESSION["mytype"] == 1) {
+        ?>
+            <Script>
+                window.location.assign("../home/index.php");
+            </Script>            
+        <?php
+    }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
 
     if(isset($_POST["submit"])) {
@@ -15,13 +22,6 @@
 
         $name = $_POST["name"];
         $name = mysqli_real_escape_string($db,$name);
-
-        // $filename1 = $_FILES["myvd"]["name"];
-        // $vdname = $filename1;
-        // $tmpname1 = $_FILES["myvd"]["tmp_name"];
-        // $path1 = "./movievideo/" . $vdname;
-        // move_uploaded_file($tmpname1, $path1);
-        // $trailor = $vdname;
 
         $trailor = $_POST["trailor"];
         $trailor = mysqli_real_escape_string($db,$trailor);
@@ -239,7 +239,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
+                                        <?php 
                                             $sel = "SELECT * FROM `allmovies`";
                                             $result = mysqli_query($db, $sel);
                                             if(mysqli_num_rows($result)) {

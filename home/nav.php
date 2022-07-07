@@ -33,6 +33,12 @@
                  <li>
                      <a href="contact.php">Contact</a>
                  </li>
+                 <li>
+                    <a><form class="ms-auto form-inline" action="test2.php" method="post">
+                        <input class="form-control me-2" name="mysearch" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-danger" name="sbt" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form></a>
+                 </li>
              </ul>
          </div>
          <!-- /.navbar-collapse -->

@@ -3,6 +3,13 @@
     if ($_SESSION["name"] == null) {
         header("Location: signin.php");
     }
+    if ($_SESSION["mytype"] == 1) {
+        ?>
+            <Script>
+                window.location.assign("../home/index.php");
+            </Script>            
+        <?php
+    }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
 
     if(isset($_POST["submit"])) {

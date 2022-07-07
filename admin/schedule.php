@@ -3,6 +3,13 @@
     if ($_SESSION["name"] == null) {
         header("Location: signin.php");
     }
+    if ($_SESSION["mytype"] == 1) {
+        ?>
+            <Script>
+                window.location.assign("../home/index.php");
+            </Script>            
+        <?php
+    }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
     
     $dt = "SELECT * FROM `movie_schedule`";
@@ -250,7 +257,7 @@
                                             <th scope="col" style="visibility: hidden;">Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody> 
                                         <?php
                                             $sel = "SELECT * FROM `movie_sch2`";
                                             $result = mysqli_query($db, $sel);

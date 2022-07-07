@@ -3,6 +3,13 @@
     if ($_SESSION["name"] == null) {
         header("Location: signin.php");
     }
+    if ($_SESSION["mytype"] == 1) {
+        ?>
+            <Script>
+                window.location.assign("../home/index.php");
+            </Script>            
+        <?php
+    }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
     $id = $_GET["id"];
     $sel = "SELECT * FROM `allmovies` WHERE `id` = $id";
@@ -147,7 +154,7 @@
                     <div class="item">
                         <div class="movie-item-contents gradient3">
                             <img src="../admin/profile/<?php echo $row[1]?>" alt="">
-                            <div class="movie-item-content">
+                            <div class="movie-item-content"> 
                                 <div class="movie-item-content-top">
                                     <div class="pull-right">
                                         <div class="movie-ratting">
@@ -188,7 +195,6 @@
                     </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Profile</h6>
                             <table class="table table-dark">
 
                                 <tbody>                                    

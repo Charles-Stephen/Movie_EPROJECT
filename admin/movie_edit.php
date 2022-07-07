@@ -3,8 +3,15 @@
     if ($_SESSION["name"] == null) {
         header("Location: signin.php");
     }
+    if ($_SESSION["mytype"] == 1) {
+        ?>
+            <Script>
+                window.location.assign("../home/index.php");
+            </Script>            
+        <?php
+    }
     $db = mysqli_connect("localhost", "root", "", "my_movie");
-    $id = $_GET["id"];
+    $id = $_GET["id"]; 
     $sel = "SELECT * FROM `allmovies` WHERE `id` = $id"; 
     $result = mysqli_query($db, $sel);
     $row = mysqli_fetch_array($result);
@@ -23,17 +30,8 @@
         $name = $_POST["name"];
         $name = mysqli_real_escape_string($db,$name);
 
-        $filename1 = $_FILES["myvd"]["name"];
-        if($filename1 != null) {
-            $vdname = $filename1;
-            $tmpname1 = $_FILES["myvd"]["tmp_name"];
-            $path1 = "./movievideo/" . $vdname;
-            move_uploaded_file($tmpname1, $path1);
-            $trailor = $vdname;
-        }
-        else {
-            $trailor = $row[3];
-        }
+        $trailor = $_POST["trailor"];
+        $trailor = mysqli_real_escape_string($db,$trailor);
 
         $descp = $_POST["descp"];
         $descp = mysqli_real_escape_string($db,$descp);
@@ -187,9 +185,9 @@
                                     <input type="text" class="form-control" value="<?php echo $row[2]; ?>" name="name" id="floatingInput" placeholder="Movie Name">
                                     <label for="floatingInput">Movie Name</label>
                                 </div>                                
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label">Upload New Trailor</label>
-                                    <input class="form-control bg-dark" name="myvd" type="file" id="formFile">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Add Description" name="trailor" id="floatingTextarea" style="height: 150px;"><?php echo $row[3]; ?></textarea>
+                                    <label for="floatingTextarea">Trailor</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Add Description" name="descp" id="floatingTextarea" style="height: 150px;"><?php echo $row[4]; ?></textarea>

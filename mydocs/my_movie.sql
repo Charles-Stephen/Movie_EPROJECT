@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2022 at 11:25 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Jul 07, 2022 at 07:57 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,11 +66,12 @@ CREATE TABLE `allmovies` (
 --
 
 INSERT INTO `allmovies` (`id`, `movie_cover`, `movie_name`, `trailer`, `movie_description`, `genre`, `country`, `cast`) VALUES
-(4, 'Men_in_Black_International_(Official_Film_Poster).png', 'Men in Black: International', 'MEN IN BLACK_ INTERNATIONAL.mp4', 'The Men in Black have expanded to cover the globe but so have the villains of the universe. To keep everyone safe, decorated Agent H and determined rookie M join forces -- an unlikely pairing that just might work. When aliens that can take the form of any human arrive on Earth, H and M embark on a globe-trotting adventure to save the agency -- and ultimately the world -- from their mischievous plans.', 'Action, Comedy, Science fiction', 'United States', 'Chris Hemsworth, Tessa Thompson, Rebecca Ferguson, Kumail Nanjiani, Rafe Spall, Laurent Bourgeois, Larry Bourgeois, Emma Thompson, Liam Neeson'),
-(5, 'd.jpg', '3 Idiots', '3 Idiots.mp4', 'In college, Farhan and Raju form a great bond with Rancho due to his positive and refreshing outlook to life. Years later, a bet gives them a chance to look for their long-lost friend whose existence seems rather elusive.', 'Comedy, Romance, Drama, Coming-of-age story', 'India', '	\nAamir Khan, R. Madhavan, Sharman Joshi, Omi Vaidya, Kareena Kapoor, Boman Irani'),
-(6, 'Capture.jpg', 'Housefull 3', 'Housefull 3 Official Trailer _ Watch Full Movie On Eros Now.mp4', 'A father doesn\'t want his three daughters to get married. Three men try to convince the father that they\'re a good fit for his daughters, which leads to hilarious situations.', 'Action, Comedy, Romance', 'India', 'Akshay Kumar, Abhishek Bachchan, Riteish Deshmukh, Jacqueline Fernandez, Nargis Fakhri, Lisa Haydon, Jackie Shroff'),
-(7, '751439158406x600_38.jpg', 'Train To Busan 2016', 'TRAIN TO BUSAN Official Trailer _ In Cinemas 04.08.2016.mp4', 'A man (Gong Yoo), his estranged daughter and other passengers become trapped on a speeding train during a zombie outbreak in South Korea.', 'Zombie, Horror, Action, Thriller, Disaster, Adventure, Mystery, Drama', 'South Korea (English sub)', '	\r\nGong Yoo, Jung Yu-mi, Ma Dong-seok, Kim Su-an, Choi Woo-shik, Ahn So-hee, Kim Eui-sung'),
-(8, 'kungfu.jpg', 'Kung Fu Panda', 'Kung Fu Panda - Official® Trailer 1 [HD].mp4', 'Po might just be the laziest, clumsiest panda in the Valley of Peace, but he secretly dreams of becoming a kung fu legend. When the villainous snow leopard Tai Lung threatens Po\'s homeland, the hapless panda is chosen to fulfil an ancient prophecy and defend the Valley from attack. Training under Master Shifu, Po embarks on an epic high-kicking adventure as he sets out to thwart Tai Lung\'s evil plans. A DreamWorks animation.', 'Action, Children\'s film, Comedy, Martial arts, Adventure, Animation, martial heroes', 'America', 'Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, Dan Fogler, Michael Clarke Duncan, Jackie Chan');
+(4, 'Men_in_Black_International_(Official_Film_Poster).png', 'Men in Black: International', 'https://www.youtube.com/watch?v=NoSrm2HoDXE', 'The Men in Black have expanded to cover the globe but so have the villains of the universe. To keep everyone safe, decorated Agent H and determined rookie M join forces -- an unlikely pairing that just might work. When aliens that can take the form of any human arrive on Earth, H and M embark on a globe-trotting adventure to save the agency -- and ultimately the world -- from their mischievous plans.', 'Action, Comedy, Science fiction', 'United States', 'Chris Hemsworth, Tessa Thompson, Rebecca Ferguson, Kumail Nanjiani, Rafe Spall, Laurent Bourgeois, Larry Bourgeois, Emma Thompson, Liam Neeson'),
+(5, 'd.jpg', '3 Idiots', 'https://www.youtube.com/watch?v=LYOX4QTxTA4', 'In college, Farhan and Raju form a great bond with Rancho due to his positive and refreshing outlook to life. Years later, a bet gives them a chance to look for their long-lost friend whose existence seems rather elusive.', 'Comedy, Romance, Drama, Coming-of-age story', 'India', '	\nAamir Khan, R. Madhavan, Sharman Joshi, Omi Vaidya, Kareena Kapoor, Boman Irani'),
+(6, 'Capture.jpg', 'Housefull 3', 'https://www.youtube.com/watch?v=TlZM9kuqw38', 'A father doesn\'t want his three daughters to get married. Three men try to convince the father that they\'re a good fit for his daughters, which leads to hilarious situations.', 'Action, Comedy, Romance', 'India', 'Akshay Kumar, Abhishek Bachchan, Riteish Deshmukh, Jacqueline Fernandez, Nargis Fakhri, Lisa Haydon, Jackie Shroff'),
+(7, '751439158406x600_38.jpg', 'Train To Busan 2016', 'https://www.youtube.com/watch?v=1ovgxN2VWNc', 'A man (Gong Yoo), his estranged daughter and other passengers become trapped on a speeding train during a zombie outbreak in South Korea.', 'Zombie, Horror, Action, Thriller, Disaster, Adventure, Mystery, Drama', 'South Korea (English sub)', '	\r\nGong Yoo, Jung Yu-mi, Ma Dong-seok, Kim Su-an, Choi Woo-shik, Ahn So-hee, Kim Eui-sung'),
+(8, 'kungfu.jpg', 'Kung Fu Panda', 'https://www.youtube.com/watch?v=PXi3Mv6KMzY', 'Po might just be the laziest, clumsiest panda in the Valley of Peace, but he secretly dreams of becoming a kung fu legend. When the villainous snow leopard Tai Lung threatens Po\'s homeland, the hapless panda is chosen to fulfil an ancient prophecy and defend the Valley from attack. Training under Master Shifu, Po embarks on an epic high-kicking adventure as he sets out to thwart Tai Lung\'s evil plans. A DreamWorks animation.', 'Action, Children\'s film, Comedy, Martial arts, Adventure, Animation, martial heroes', 'America', 'Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane, Seth Rogen, Lucy Liu, David Cross, Randall Duk Kim, James Hong, Dan Fogler, Michael Clarke Duncan, Jackie Chan'),
+(9, 'pEvK2AoBnhC1RgqB7VRbBCMDq23.jpg', 'Rush Hour (1998 )', 'https://www.youtube.com/watch?v=JMiFsFQcFLE', 'When a Chinese diplomat\'s daughter is kidnapped in Los Angeles, he calls in Hong Kong Detective Inspector Lee (Jackie Chan) to assist the FBI with the case. But the FBI doesn\'t want anything to do with Lee, and they dump him off on the LAPD, who assign wisecracking Detective James Carter (Chris Tucker) to watch over him. Although Lee and Carter can\'t stand each other, they choose to work together to solve the case on their own when they figure out they\'ve been ditched by both the FBI and police.', 'Comedy, Action, Buddy Cop, Thriller, Crime Fiction', 'United States', 'Jackie Chan, Chris Tucker, Tzi Ma, Tom Wilkinson, Ken Leung, Elizabeth Peña, Mark Rolston, Rex Linn');
 
 -- --------------------------------------------------------
 
@@ -114,8 +115,8 @@ CREATE TABLE `kids_package` (
 
 CREATE TABLE `movie_sch2` (
   `id` int(11) NOT NULL,
-  `movie_date` int(11) NOT NULL,
-  `movie_time` int(11) NOT NULL,
+  `movie_date` date NOT NULL,
+  `movie_time_id` int(11) NOT NULL,
   `theater_id` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
   `total_seats` int(11) NOT NULL,
@@ -126,58 +127,10 @@ CREATE TABLE `movie_sch2` (
 -- Dumping data for table `movie_sch2`
 --
 
-INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES
-(1, 3, 1, 1, 5, 100, 100),
-(2, 1, 2, 1, 4, 100, 100),
-(4, 3, 2, 3, 7, 100, 100);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `movie_schedule`
---
-
-CREATE TABLE `movie_schedule` (
-  `id` int(11) NOT NULL,
-  `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `movie_schedule`
---
-
-INSERT INTO `movie_schedule` (`id`, `date`) VALUES
-(1, '1'),
-(2, '2'),
-(3, '3'),
-(4, '4'),
-(7, '5'),
-(8, '6'),
-(9, '7'),
-(10, '8'),
-(11, '9'),
-(12, '10'),
-(13, '11'),
-(14, '12'),
-(15, '13'),
-(16, '14'),
-(17, '15'),
-(18, '16'),
-(19, '17'),
-(20, '18'),
-(21, '19'),
-(22, '20'),
-(23, '21'),
-(24, '22'),
-(25, '23'),
-(26, '24'),
-(27, '25'),
-(28, '26'),
-(29, '27'),
-(30, '28'),
-(31, '29'),
-(32, '30'),
-(33, '31');
+INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time_id`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES
+(1, '2022-07-18', 1, 1, 4, 100, 100),
+(2, '2022-07-18', 2, 1, 4, 100, 100),
+(4, '2022-07-20', 2, 3, 7, 100, 100);
 
 -- --------------------------------------------------------
 
@@ -308,12 +261,6 @@ ALTER TABLE `movie_sch2`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `movie_schedule`
---
-ALTER TABLE `movie_schedule`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `movie_time`
 --
 ALTER TABLE `movie_time`
@@ -357,7 +304,7 @@ ALTER TABLE `adult_package`
 -- AUTO_INCREMENT for table `allmovies`
 --
 ALTER TABLE `allmovies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `complaints`
@@ -376,12 +323,6 @@ ALTER TABLE `kids_package`
 --
 ALTER TABLE `movie_sch2`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `movie_schedule`
---
-ALTER TABLE `movie_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `movie_time`
