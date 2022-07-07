@@ -123,7 +123,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
                                                 <label>ADULT SEATS</label>                                    
-                                                <select onchange="seatval()" class="form-control" name="myseat1" id="myseat1">
+                                                <select onchange="test(this)" class="form-control" name="myseat1" id="myseat1">
                                                     <option value="0">No. of Seats</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -134,14 +134,14 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                     <option value="7">7</option>
                                                     <option value="8">8</option>
                                                     <option value="9">9</option>
-                                                    <option value="10">10</option>
+                                                    <option value="10">10</option>  
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
                                                 <label>KIDS SEATS <i>50% off</i> (<i>bellow 10yrs</i>)</label>
-                                                <select onchange="seatval()" class="form-control" name="myseat2" id="myseat2">
+                                                <select onchange="test2(this)" class="form-control" name="myseat2" id="myseat2">
                                                     <option value="0">No. of Seats</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -165,35 +165,20 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                             </div>
                                         </div>                                        
 
-                                        <script>
-                                            function seatval() {
-                                                var selec1 = document.getElementById('myseat1');
-                                                var value1 = selec1.options[select.selectedIndex].value;
-                                                alert(value1);                                                
-                                                var selec2 = document.getElementById('myseat2');
-                                                var value2 = selec2.options[select.selectedIndex].value;
-
-                                                document.getElementById("saett").value = value1 + value2;
-                                            }
-
-                                            function test(a) {
-                                                var x = (a.value || a.options[a.selectedIndex].value);  //crossbrowser solution =)
-                                                alert(x);
-                                            }
-                                        </script>
-                                        <select onchange="test(this)" id="select_id">
-    <option value="0">-Select-</option>
-    <option value="1">Communication</option>
-    <option value="2">Communication</option>
-    <option value="3">Communication</option>
-</select>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
                                                 <label>TOTAL SEATS</label>                                    
-                                                <input type="number" name="t"  id="saett" readonly>
+                                                <input type="number" name="t" class="form-control"  id="saett" readonly>
                                             </div>
                                         </div>                                        
+
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>TOTAL PRICE</label>                                    
+                                                <input type="number" name="p" class="form-control"  id="saetp" readonly>
+                                            </div>
+                                        </div>                                        
+                                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
                                                 <label>ADULT SEATS</label>                                    
                                                 <select class="form-control" name="myseat1">
@@ -210,7 +195,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                     <option value="10">10</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <button type="submit" name="submit" class="pull-right btn btn-default">NEXT <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
@@ -278,6 +263,43 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
 });
  
 });;
+
+
+$(document).ready(function(){
+    
+    $("#myseat2").on('change',function(){
+        var myseat1 = $("#myseat1").val();
+   var myseat2 = $("#myseat2").val();
+
+   myseat1 = parseInt(myseat1);
+   myseat2 = parseInt(myseat2);
+
+    var total = myseat1 + myseat2;
+
+    $("#saett").val(total);
+
+
+
+    })
+ 
+    $("#myseat1").on('change',function(){
+        var myseat1 = $("#myseat1").val();
+   var myseat2 = $("#myseat2").val();
+
+   myseat1 = parseInt(myseat1);
+   myseat2 = parseInt(myseat2);
+
+    var total = myseat1 + myseat2;
+
+    $("#saett").val(total);
+
+
+    
+    })
+ 
+
+
+})
 // $('#date').on('change', function() {
 //     const id =$(this).find(":selected").val();
 
