@@ -7,6 +7,7 @@ $sel = "SELECT t.id,t.name FROM `movie_sch2` m INNER JOIN theater t ON m.theater
 // echo $sel;
 $result = mysqli_query($db, $sel);
 
+?> <option value="0">Please Select</option><?php
 while($row = mysqli_fetch_array($result)) { 
 
 ?>

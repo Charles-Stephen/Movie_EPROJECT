@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2022 at 07:57 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Generation Time: Jul 07, 2022 at 08:07 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,9 +40,18 @@ CREATE TABLE `accounts` (
 
 CREATE TABLE `adult_package` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title_id` int(11) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `adult_package`
+--
+
+INSERT INTO `adult_package` (`id`, `title_id`, `price`) VALUES
+(1, 1, 700),
+(2, 2, 1000),
+(3, 3, 1200);
 
 -- --------------------------------------------------------
 
@@ -103,9 +112,18 @@ INSERT INTO `complaints` (`id`, `name`, `email`, `subject`, `message`) VALUES
 
 CREATE TABLE `kids_package` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `title_id` int(11) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kids_package`
+--
+
+INSERT INTO `kids_package` (`id`, `title_id`, `price`) VALUES
+(1, 1, 350),
+(2, 2, 500),
+(3, 3, 600);
 
 -- --------------------------------------------------------
 
@@ -130,7 +148,7 @@ CREATE TABLE `movie_sch2` (
 INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time_id`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES
 (1, '2022-07-18', 1, 1, 4, 100, 100),
 (2, '2022-07-18', 2, 1, 4, 100, 100),
-(4, '2022-07-20', 2, 3, 7, 100, 100);
+(4, '2022-07-20', 2, 3, 4, 100, 100);
 
 -- --------------------------------------------------------
 
@@ -155,6 +173,26 @@ INSERT INTO `movie_time` (`id`, `time`) VALUES
 (5, '7:00 pm'),
 (6, '9:30 pm'),
 (7, '12:00 am');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seat_catgory`
+--
+
+CREATE TABLE `seat_catgory` (
+  `id` int(11) NOT NULL,
+  `package` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `seat_catgory`
+--
+
+INSERT INTO `seat_catgory` (`id`, `package`) VALUES
+(1, 'Box'),
+(2, 'Gold'),
+(3, 'Platinum');
 
 -- --------------------------------------------------------
 
@@ -267,6 +305,12 @@ ALTER TABLE `movie_time`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `seat_catgory`
+--
+ALTER TABLE `seat_catgory`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `theater`
 --
 ALTER TABLE `theater`
@@ -298,7 +342,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `adult_package`
 --
 ALTER TABLE `adult_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `allmovies`
@@ -316,7 +360,7 @@ ALTER TABLE `complaints`
 -- AUTO_INCREMENT for table `kids_package`
 --
 ALTER TABLE `kids_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `movie_sch2`
@@ -329,6 +373,12 @@ ALTER TABLE `movie_sch2`
 --
 ALTER TABLE `movie_time`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `seat_catgory`
+--
+ALTER TABLE `seat_catgory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `theater`
