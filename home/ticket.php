@@ -1,3 +1,7 @@
+<?php
+$db = mysqli_connect("localhost", "root", "", "my_movie");
+
+?>
 <!doctype html>
  <html lang="en">
  <!-- Mirrored from movie.themepul.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:07:17 GMT -->
@@ -53,7 +57,6 @@
  <body>
      <?php
          include_once("nav.php");
-         $db = mysqli_connect("localhost", "root", "", "my_movie");
         ?>  
      <div class="main page-template">
          <div class="inner-page">
@@ -64,104 +67,106 @@
                              <div class="row">
                                  <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Book Your Tickets</h1>
                                  <span style=" color:red;"><h2>Available Tickets</h2></span>
-                                 <form action="#" class="mt-5 contact-form">
-                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                         <div class="form-group">
-                                             <label>SELECT MOVIE</label>
-                                             <select  id="movie" name ="myselmov" class="form-control">
-                                                 <option>Select Movie</option>
-                                                 <?php
-                                                    $sel = "SELECT * FROM `allmovies`";
-                                                    $result = mysqli_query($db, $sel);
-                                                    if(mysqli_num_rows($result)) {
-                                                        $i = 0;
-                                                        while($row = mysqli_fetch_array($result)) {
-                                                            $i++;
-                                                 ?>                        
-                                                    <option value="<?php echo $row[0]; ?>">
-                                                        <?php echo $row[2]; ?>                                                                               
-                                                    </option>                                                
-                                                 <?php
+                                 <form action="#" method="post" class="mt-5 contact-form">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>SELECT MOVIE</label>
+                                                <select  id="movie" name ="myselmov" class="form-control">
+                                                    <option>Select Movie</option>
+                                                    <?php
+                                                        $sel = "SELECT * FROM `allmovies`";
+                                                        $result = mysqli_query($db, $sel);
+                                                        if(mysqli_num_rows($result)) {
+                                                            $i = 0;
+                                                            while($row = mysqli_fetch_array($result)) {
+                                                                $i++;
+                                                    ?>                        
+                                                        <option value="<?php echo $row[0]; ?>">
+                                                            <?php echo $row[2]; ?>                                                                               
+                                                        </option>                                                
+                                                    <?php
+                                                            }
                                                         }
-                                                    }
-                                                 ?>
-                                             </select>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                         <div class="form-group">
-                                             <label>SELECT THEATER</label>
-                                             <select class="form-control" id="cinema">
-                                                 <option>Select Theater</option>
-                                             </select>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                         <div class="form-group">
-                                             <label>SELECT  SEAT CATEGORY</label>
-                                             <select class="form-control" name="mycat">
-                                                 <option>Select Seat Category</option>
-                                                 <?php
-                                                    $selct = "SELECT * FROM `seat_catgory`";
-                                                    $resultct = mysqli_query($db, $selct);
-                                                    if(mysqli_num_rows($result)) {
-                                                        while($rowct = mysqli_fetch_array($resultct)) {                                                        
-                                                 ?>                        
-                                                    <option value="<?php echo $rowct[0]; ?>">
-                                                        <?php echo $rowct[1]; ?>                                                                               
-                                                    </option>                                                
-                                                 <?php
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>SELECT THEATER</label>
+                                                <select class="form-control" id="cinema">
+                                                    <option>Select Theater</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label>SELECT  SEAT CATEGORY</label>
+                                                <select class="form-control" name="mycat">
+                                                    <option>Select Seat Category</option>
+                                                    <?php
+                                                        $selct = "SELECT * FROM `seat_catgory`";
+                                                        $resultct = mysqli_query($db, $selct);
+                                                        if(mysqli_num_rows($result)) {
+                                                            while($rowct = mysqli_fetch_array($resultct)) {                                                        
+                                                    ?>                        
+                                                        <option value="<?php echo $rowct[0]; ?>">
+                                                            <?php echo $rowct[1]; ?>                                                                               
+                                                        </option>                                                
+                                                    <?php
+                                                            }
                                                         }
-                                                    }
-                                                 ?>
-                                             </select>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                         <div class="form-group">
-                                             <label>ADULT SEATS</label>                                    
-                                             <select class="form-control" name="myseat1">
-                                                 <option>No. of Seats</option>
-                                                 <option value="1">1</option>
-                                                 <option value="2">2</option>
-                                                 <option value="3">3</option>
-                                                 <option value="4">4</option>
-                                                 <option value="5">5</option>
-                                                 <option value="6">6</option>
-                                                 <option value="7">7</option>
-                                                 <option value="8">8</option>
-                                                 <option value="9">9</option>
-                                                 <option value="10">10</option>
-                                             </select>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                         <div class="form-group">
-                                             <label>KIDS SEATS <i>50% off</i> (<i>bellow 10yrs</i>)</label>
-                                             <select class="form-control" name="myseat2">
-                                                 <option>No. of Seats</option>
-                                                 <option value="1">1</option>
-                                                 <option value="2">2</option>
-                                                 <option value="3">3</option>
-                                                 <option value="4">4</option>
-                                                 <option value="5">5</option>
-                                                 <option value="6">6</option>
-                                                 <option value="7">7</option>
-                                                 <option value="8">8</option>
-                                                 <option value="9">9</option>
-                                                 <option value="10">10</option>
-                                             </select>
-                                         </div>
-                                     </div>
-                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                         <div class="form-group">
-                                             <label for="email">SELECT TIME & DATE</label>
-                                             <select class="form-control" id="date">
-                                                 <option>Select Date</option>
-                                             </select>
-                                         </div>
-                                     </div>
-                                     </div>
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>ADULT SEATS</label>                                    
+                                                <select class="form-control" name="myseat1">
+                                                    <option>No. of Seats</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>KIDS SEATS <i>50% off</i> (<i>bellow 10yrs</i>)</label>
+                                                <select class="form-control" name="myseat2">
+                                                    <option>No. of Seats</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="email">SELECT TIME & DATE</label>
+                                                <select class="form-control" id="date">
+                                                    <option>Select Date</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-default">Submit</button>
+                                        </div>      
                                  </form>
                              </div>
                          </div>
@@ -219,21 +224,21 @@
 });
  
 });;
-$('#date').on('change', function() {
-    const id =$(this).find(":selected").val();
+// $('#date').on('change', function() {
+//     const id =$(this).find(":selected").val();
 
-    $.ajax({
-  url: "get_movietime_data.php",
-  cache: false,
-  type: "POST",
-  data: {id : id},
-  success: function(html){
-    $('#mytime').html(html);
+//     $.ajax({
+//   url: "get_movietime_data.php",
+//   cache: false,
+//   type: "POST",
+//   data: {id : id},
+//   success: function(html){
+//     $('#mytime').html(html);
 
-  }
-});
+//   }
+// });
 
-});;
+// });;
      </script>
  </body>
  <!-- Mirrored from movie.themepul.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:07:17 GMT -->

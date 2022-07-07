@@ -10,7 +10,7 @@ $result = mysqli_query($db, $sel);
 
 ?> <option value="0">Please Select</option><?php
 while($row = mysqli_fetch_array($result)) { ?>
-<option value="<?php echo $row['id']; ?>"><?php echo $row['movie_date'] . " - " . $row["time"]; ?></option>
+<option value="<?php echo $row['id']; ?>"><?php echo $row['movie_date'] . " at " . $row["time"]; ?></option>
 <?php 
 }
 exit();
