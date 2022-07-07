@@ -1,10 +1,6 @@
 <?php
  session_start();
  $db = mysqli_connect("localhost", "root", "", "my_movie");
- if($_SESSION["name"] == null)
- {
-    header("Location:../admin/signin.php");
- }
 ?>
 <!doctype html>
  <html lang="en">
@@ -175,7 +171,7 @@
                                                      </div>
                                                      <div class="movie-item-beta">
                                                          <div class="movie-details">
-                                                             <a href="#" class="btn btn-button button-detals black-bg">details</a>
+                                                         <a href="details.php?id=<?php echo $row[0] ?>" class="btn btn-button button-detals black-bg">details</a>
                                                          </div>
                                                      </div>
                                                  </div>
