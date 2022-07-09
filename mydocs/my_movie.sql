@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2022 at 08:07 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jul 09, 2022 at 10:12 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,6 +31,13 @@ CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
   `balance` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `balance`) VALUES
+(1, 14800);
 
 -- --------------------------------------------------------
 
@@ -138,17 +145,20 @@ CREATE TABLE `movie_sch2` (
   `theater_id` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
   `total_seats` int(11) NOT NULL,
-  `available_seats` int(11) NOT NULL
+  `available_seats` int(11) NOT NULL,
+  `box_seats` int(11) NOT NULL,
+  `gold_seats` int(11) NOT NULL,
+  `platinum_seats` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `movie_sch2`
 --
 
-INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time_id`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES
-(1, '2022-07-18', 1, 1, 4, 100, 100),
-(2, '2022-07-18', 2, 1, 4, 100, 100),
-(4, '2022-07-20', 2, 3, 4, 100, 100);
+INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time_id`, `theater_id`, `movie_id`, `total_seats`, `available_seats`, `box_seats`, `gold_seats`, `platinum_seats`) VALUES
+(1, '2022-07-18', 1, 1, 4, 100, 100, 70, 20, 10),
+(2, '2022-07-18', 2, 1, 6, 100, 100, 70, 20, 10),
+(4, '2022-07-20', 2, 1, 4, 100, 100, 70, 20, 10);
 
 -- --------------------------------------------------------
 
@@ -224,14 +234,21 @@ INSERT INTO `theater` (`id`, `name`, `screen`, `seats`) VALUES
 
 CREATE TABLE `tickets` (
   `id` int(11) NOT NULL,
-  `adult_package_Id` int(11) NOT NULL,
-  `kids_package_Id` int(11) NOT NULL,
-  `movie_Id` int(11) NOT NULL,
+  `your_package` int(11) NOT NULL,
+  `adult_seatNo` int(11) NOT NULL,
+  `kids_seatNo` int(11) NOT NULL,
   `ticket_No` varchar(225) NOT NULL,
   `movie_sch2_Id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `your_package`, `adult_seatNo`, `kids_seatNo`, `ticket_No`, `movie_sch2_Id`, `quantity`, `amount`) VALUES
+(1, 2, 1, 1, 'TK-194156177', 1, 2, 1500);
 
 -- --------------------------------------------------------
 
@@ -336,7 +353,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `adult_package`
@@ -390,7 +407,7 @@ ALTER TABLE `theater`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

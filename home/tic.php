@@ -1,6 +1,6 @@
 <?php
-session_start();
 $db = mysqli_connect("localhost", "root", "", "my_movie");
+
 ?>
 <!doctype html>
  <html lang="en">
@@ -68,25 +68,12 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                  <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Book Your Tickets</h1>
                                  <span style=" color:red;"><h2 id="seatsleft"></h2></span>
                                  <?php
-                                    if(isset($_POST["submit"])) {
-                                        // $w_movie = $_POST["myselmov"];
-                                        // $cinema = $_POST["cinema"];
-                                        $wdate = $_POST["wdate"];
-                                        $mycat = $_POST["mycat"];
-                                        $myseat1 = $_POST["myseat1"];
-                                        $myseat2 = $_POST["myseat2"];
-                                        $_SESSION["wdate"] = $wdate;
-                                        $_SESSION["mycat"] = $mycat;
-                                        $_SESSION["myseat1"] = $myseat1;
-                                        $_SESSION["myseat2"] = $myseat2;
-                                        ?>
-                                        <Script>
-                                            window.location.assign("./test.php");
-                                        </Script>
-                                        <?php
-                                    }
+                                    $mysh = "SELECT * FROM `movie_sch2`";
+                                    $myres = mysqli_query($db, $mysh);
+                                    while($myshrow = mysqli_fetch_array($myres)) {
+                                    
                                  ?>
-                                 <form action="#" method="post" class="mt-5 contact-form">
+                                 <form action="test.php" method="post" class="mt-5 contact-form">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
                                                 <label>SELECT MOVIE</label>
@@ -101,7 +88,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                                 $i++;
                                                     ?>                        
                                                         <option value="<?php echo $row[0]; ?>">
-                                                            <?php echo $row[2]; ?>                                                                               
+                                                            <?php echo $myshrow[4]; ?>                                                                               
                                                         </option>                                                
                                                     <?php
                                                             }
@@ -113,7 +100,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
                                                 <label>SELECT THEATER</label>
-                                                <select class="form-control" id="cinema" name="cinema">
+                                                <select class="form-control" id="cinema">
                                                     <option>Select Theater</option>
                                                 </select>
                                             </div>
@@ -121,7 +108,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <label for="email">SELECT TIME & DATE</label>
-                                                <select class="form-control" id="date" name="wdate">
+                                                <select class="form-control" id="date">
                                                     <option>Select Date</option>
                                                 </select>
                                             </div>
@@ -130,7 +117,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                             <div class="form-group">
                                                 <label>SELECT  SEAT CATEGORY</label>
                                                 <select class="form-control" name="mycat" id="mycat">
-                                                    <option value="0">Select Seat Category</option>
+                                                    <option>Select Seat Category</option>
                                                     <?php
                                                         $selct = "SELECT * FROM `seat_catgory`";
                                                         $resultct = mysqli_query($db, $selct);
@@ -191,12 +178,28 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                             </div>
                                         </div>                                        
 
+                                        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label>TOTAL PRICE</label>                                    
+                                                <input type="number" name="p" class="form-control"  id="saetp" readonly>
+                                            </div>
+                                        </div>                                         -->
+                                        
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="form-group">
                                                 <button type="submit" name="submit" class="pull-right btn btn-default">NEXT <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                                             </div>      
                                         </div>                                        
+                                        <?php
+                                            // if(isset($_POST["submit"])) {
+                                            //     $_SESSION["myselmov"]
+                                            // }
+                                        ?>
                                  </form>
+                                 <?php
+                                     
+                                    }
+                                 ?>
                              </div>
                          </div>
                      </div>
@@ -222,7 +225,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
      <script src="js/tab.js"></script>
      <script src="js/main.js"></script>
 
-     <script>
+     <!-- <script>
         $('#movie').on('change', function() {
     const id =$(this).find(":selected").val();
 
@@ -307,7 +310,7 @@ $('#date').on('change', function() {
 });;
 // 
 
-     </script>
+     </script> -->
  </body>
  <!-- Mirrored from movie.themepul.com/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:07:17 GMT -->
 </html>

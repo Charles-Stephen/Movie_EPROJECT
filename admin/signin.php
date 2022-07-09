@@ -34,7 +34,7 @@ session_start();
       $result = mysqli_query($db, $sel);
       if(mysqli_num_rows($result)) {
         while($row = mysqli_fetch_array($result)) {
-          $_SESSION["name"] = $row[2];                      
+          $_SESSION["name"] = $row[2];
           $_SESSION["mytype"] = $row[7];
           $_SESSION["profile"] = $row[1];                        
         }

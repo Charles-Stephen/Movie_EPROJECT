@@ -1,6 +1,7 @@
 <?php
+session_start();
 $movie_id = $_POST['id'];
-
+$_SESSION["whatmovie"] = $movie_id;
 
 $db = mysqli_connect("localhost", "root", "", "my_movie");
 $sel = "SELECT t.id,t.name FROM `movie_sch2` m INNER JOIN theater t ON m.theater_id = t.id  WHERE m.movie_id = $movie_id";
