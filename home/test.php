@@ -106,21 +106,23 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                             $creditno = $_POST["creditno"];
                                             $myp = "SELECT * FROM `users` WHERE `Credit_Card` = $creditno && `user_type` = $mytypeid";
                                             $p_result = mysqli_query($db, $myp);
-                                            if(mysqli_num_rows($p_result)) {
+                                            if(mysqli_num_rows($p_result)) {                                                
                                                 $b_sel = "SELECT * FROM `accounts` WHERE `id` = 1";
                                                 $b_result = mysqli_query($db, $b_sel);
                                                 $b_row = mysqli_fetch_array($b_result);
                                                 $b_add = (int)$totalresult + $b_row[1];
                                                 $b_up = "UPDATE `accounts` SET `balance` = $b_add WHERE `id` = 1";
                                                 $b_result2 = mysqli_query($db, $b_up);
+                                                $userrow = mysqli_fetch_array($p_result);
+                                                $ouruser = $userrow[0];
                                                 $tkno = "TK-" . rand();
                                                 $userseats = (int)$myseat3 + (int)$myseat4;
-                                                $tk_in = "INSERT INTO `tickets`(`your_package`, `adult_seatNo`, `kids_seatNo`, `ticket_No`, `movie_sch2_Id`, `quantity`, `amount`) VALUES ('$mycat1','$myseat3','$myseat4','$tkno','$wdate1','$userseats','$totalresult')";
+                                                $tk_in = "INSERT INTO `tickets`(`user_id`, `your_package`, `adult_seatNo`, `kids_seatNo`, `ticket_No`, `movie_sch2_Id`, `quantity`, `amount`) VALUES ('$ouruser','$mycat1','$myseat3','$myseat4','$tkno','$wdate1','$userseats','$totalresult')";
                                                 $tk_result = mysqli_query($db, $tk_in);
                                                 // remove all session variables
-                                                session_unset();
+                                                // session_unset();
                                                 // destroy the session
-                                                session_destroy();
+                                                // session_destroy();
                                                 ?>
                                                 <Script>
                                                     window.location.assign("./index.php");

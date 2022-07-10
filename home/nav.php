@@ -33,15 +33,38 @@
                  <li>
                      <a href="contact.php">Contact</a>
                  </li>
+                 <?php
+                    if (isset($_SESSION["name"]) == null) {
+                        ?>
+                        <li>
+                            <a href="../admin/signup.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="../admin/signin.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                        </li>
+                        <?php
+                    }
+                    else {
+                        ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><img src="../admin/profile/<?php echo $_SESSION["profile"]; ?>" style="width: 3vw; height: 3vw;" alt=""> Your Profile</a></li>
+                                <li><a href="../admin/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
+                            </ul>
+                        </li>
+                        <?php
+                    }
+                 ?>
                  <li>
                      <a><form class="ms-auto form-inline" action="test2.php" method="post">
                          <input class="form-control me-2" name="mysearch" type="search" placeholder="Search" aria-label="Search">
                          <button class="btn btn-danger" name="sbt" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                      </form></a>
                  </li>
-                 <li class="float-right">
-                     <a href="../admin/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
-                 </li>
+                 <!-- <li class="float-right">
+                     <a href="../admin/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a>
+                 </li> -->
              </ul>
          </div>
          <!-- /.navbar-collapse -->

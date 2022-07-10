@@ -1,20 +1,7 @@
 <?php
 session_start();
  
-    // if(isset($_SESSION["mytype"]) == 0) {
-        ?>
-            <Script>
-                // window.location.assign("./index.php");
-            </Script>            
-        <?php
-    // }
-    // else if(isset($_SESSION["mytype"]) == 1) {
-        ?>
-            <!-- <Script> -->
-                <!-- window.location.assign("../home/index.php"); -->
-            <!-- </Script>             -->
-        <?php
-    // }
+  
   $db = mysqli_connect("localhost", "root", "", "my_movie");
 
   if (isset($_POST["login"])) {                    
@@ -136,7 +123,7 @@ session_start();
                             </div>
                             <button type="submit" name="login" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                             <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
-                            <p class="text-center mb-0"><i class="fas fa-long-arrow-alt-left"></i> <a href="./home/index.php">Go to Customer Panel</a></p>                        
+                            <p class="text-center mb-0"><i class="fas fa-long-arrow-alt-left"></i> <a href="../home/index.php">Go to Customer Panel</a></p>                        
                         </div>
                     </form>
                 </div>

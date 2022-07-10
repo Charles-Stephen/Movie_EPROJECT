@@ -1,20 +1,6 @@
 <?php
 session_start();
    
-    if ($_SESSION["mytype"] == 0) {
-        ?>
-            <Script>
-                window.location.assign("./index.php");
-            </Script>            
-        <?php
-    }
-    if ($_SESSION["mytype"] == 1) {
-        ?>
-            <Script>
-                window.location.assign("../home/index.php");
-            </Script>            
-        <?php
-    }
 
     $db = mysqli_connect("localhost", "root", "", "my_movie");
 
@@ -38,7 +24,7 @@ session_start();
             $pass = $_POST["pass"];
             $pass = md5($pass);
             $ph = $_POST["phone"];
-            $user_type = 0;
+            $user_type = 1;
             $inp = "INSERT INTO `users`(`profile`, `Name`, `Email`, `Pass`, `Phone`, `Credit_Card`, `user_type`) VALUES ('$profile_img','$name','$email','$pass','$ph',$c_n,$user_type)";
             $result2 = mysqli_query($db, $inp);
             ?>
