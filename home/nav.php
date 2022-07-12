@@ -49,7 +49,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><img src="../admin/profile/<?php echo $_SESSION["profile"]; ?>" style="width: 3vw; height: 3vw;" alt=""> Your Profile</a></li>
+                                <li><a href="profile.php"><img src="../admin/profile/<?php echo $_SESSION["profile"]; ?>" style="width: 3vw; height: 3vw;" alt=""> Your Profile</a></li>
                                 <li><a href="../admin/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
                             </ul>
                         </li>

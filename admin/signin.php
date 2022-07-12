@@ -1,6 +1,5 @@
 <?php
-session_start();
- 
+session_start(); 
   
   $db = mysqli_connect("localhost", "root", "", "my_movie");
 
@@ -21,6 +20,7 @@ session_start();
       $result = mysqli_query($db, $sel);
       if(mysqli_num_rows($result)) {
         while($row = mysqli_fetch_array($result)) {
+          $_SESSION["myuserid"] = $row[0];
           $_SESSION["name"] = $row[2];
           $_SESSION["mytype"] = $row[7];
           $_SESSION["profile"] = $row[1];                        
@@ -102,7 +102,7 @@ session_start();
                         <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <p class="text-danger text-center"><?php if(isset($error)) { echo $error; } ?></p>
                             <div class="text-center align-items-center justify-content-between mb-3">
-                                <a href="index.php" class="">
+                                <a href="../home/index.php" class="">
                                     <h3 class="text-primary"><img src="./img/signage-removebg-preview.png" alt=""></h3>
                                 </a>
                                 <h3><i class="fa fa-user-edit me-2"></i> Sign In</h3>

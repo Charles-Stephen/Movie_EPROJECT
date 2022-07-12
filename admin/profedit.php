@@ -2,7 +2,7 @@
     session_start();
     if ($_SESSION["name"] == null) {
         header("Location: signin.php");
-    }
+    } 
     if ($_SESSION["mytype"] == 1) {
         ?>
             <Script>
