@@ -266,7 +266,7 @@
                                              </div>
                                              <div class="movie-item-beta">
                                                  <div class="movie-details">
-                                                     <a href="#" class="btn btn-button button-detals black-bg">details</a>
+                                                     <a href="details.php?id=<?php echo $row[0] ?>" class="btn btn-button button-detals black-bg">details</a>
                                                  </div>
                                                  <div class="view-movie hover-right">
                                                      <a class="black-bg" href="#">15k view</a>

@@ -113,8 +113,8 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                                      <td class="col-8" style="color: white; text-align: start;"><?php echo " : " . $row[5]?></td>
                                                                  </tr>
                                                                  <tr class="row">
-                                                                     <th class="col-3" style="color: white;"><b>language</b></th>
-                                                                     <td class="col-8" style="color: white; text-align: start;"><?php echo " : " . $row[8]?></td>
+                                                                     <th class="col-3" style="color: white;"><b>Country</b></th>
+                                                                     <td class="col-8" style="color: white; text-align: start;"><?php echo " : " . $row[6]?></td>
                                                                  </tr>
                                                              </tbody>
                                                          </table>
@@ -168,47 +168,31 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                              <h2 class="title">Leave a Comment</h2>
                                              <div class="respons-box">
                                                  <div class="form">
-                                                     <form action="#" mehod="post">
+                                                     <form action="myreview.php" mehod="post">
                                                          <div class="row">
                                                              <div class="col-md-6">
                                                                  <div class="form-group">
                                                                      <label for="name">Nick Name :</label>
-                                                                     <input class="form-control form-mane" required="" type="text" name="name">
+                                                                     <input class="form-control form-mane" required type="text" name="name">
                                                                  </div>
                                                              </div>
                                                              <div class="col-md-6">
                                                                  <div class="form-group">
                                                                      <label for="email">E-mail :</label>
-                                                                     <input class="form-control form-email" required="" type="email" name="email">
+                                                                     <input class="form-control form-email" required type="email" name="email">
                                                                  </div>
                                                              </div>
                                                          </div>
                                                          <div class="form-group">
                                                              <label for="message">Write a Message :</label>
-                                                             <textarea class="form-control form-comment" cols="10" rows="8" name="comment" required="" name="msg"></textarea>
+                                                             <textarea class="form-control form-comment" cols="10" rows="8" name="comment" required name="msg"></textarea>
                                                          </div>
+                                                         <input type="hidden" name="mid" value="<?php echo $row[0]; ?>">
                                                          <div class="buttons">
                                                              <input type="submit" name="submit" class="btn btn-success" value="Send Comment">
                                                          </div>
                                                      </form>
-                                                     <?php
-                                                         if(isset($_POST["submit"]))
-                                                           {
-                                                             $Name = $_POST["name"];
-                                                             $Email = $_POST["email"];
-                                                             $Message = $_POST["msg"];
-                                                             $cmp = "INSERT INTO `review`(`Id`, `Movie_id`, `Name`, `Email`, `Message`) VALUES (Null,'$id','$Name','$Email','$Message')";
-                                                             $result3 = mysqli_query($db, $cmp);
-                                                             $cp = mysqli_num_rows($result3);
-                                                             if($cp) 
-                                                               {
-                                                                 while($row3 = mysqli_fetch_array($result3))        
-                                                                   {   
-                                                                     header("Location:../admin/index.php");
-                                                                    }
-                                                                }
-                                                            }
-                                                        ?>
+                                                     
                                                  </div>
                                              </div>
                                          </div>
@@ -278,7 +262,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                                  </div>
                                                                  <div class="movie-item-beta">
                                                                      <div class="movie-details">
-                                                                         <a href="#" class="btn btn-button button-detals blck-bg">details</a>
+                                                                         <a href="details.php?id=<?php echo $row[0] ?>" class="btn btn-button button-detals blck-bg">details</a>
                                                                      </div>
                                                                      <div class="view-movie hover-right">
                                                                          <a class="blck-bg" href="#">15k view</a>
