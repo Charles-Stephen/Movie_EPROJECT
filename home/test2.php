@@ -2,7 +2,7 @@
 <html lang="en">
  <!-- Mirrored from movie.themepul.com/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Jun 2022 15:06:38 GMT -->
  <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A Template by themepul.com">
@@ -70,12 +70,10 @@
                         <button class="btn btn-danger" name="sbt" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form> -->
                     <?php
-                      if(isset($_POST["sbt"])) {
-                          $chmovie = $_POST["mysearch"];
-                          $_SESSION["srch"] = $chmovie;
-                          $sel = "SELECT * FROM `allmovies` WHERE `movie_name` LIKE '%$chmovie%'";
-                          $result = mysqli_query($db, $sel);
-                      }
+
+                        $chmovie = $_SESSION["srch"];
+                        $sel = "SELECT * FROM `allmovies` WHERE `movie_name` LIKE '%$chmovie%'";
+                        $result = mysqli_query($db, $sel);
                       $i = 0;
                       while($row = mysqli_fetch_array($result)) {                                                    
                           $i++;

@@ -72,42 +72,50 @@
                         <div class="row">
                             <img src="../admin/profile/<?php echo $_SESSION["profile"]; ?>" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" alt="">
 
-                            <table class="table table-bordered">
-                                <tbody>                       
-                                    <?php
-                                        $id = $_SESSION["profile"];
-                                        $psel = "SELECT * FROM `users` WHERE `profile` = $id";
-                                        $myresult = mysqli_query($db, $psel);
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                <table class="table table-bordered">
+                                    <tbody>                       
+                                        <?php
+                                            $id = $_SESSION["profile"];
+                                            $psel = "SELECT * FROM `users` WHERE `profile` = '$id'";
+                                            $myresult = mysqli_query($db, $psel);
 
+                                            
+                                            if(mysqli_num_rows($myresult)) {
+                                                while ($row = mysqli_fetch_array($myresult)) {
+                                                    
+                                        ?>
+                                        <tr>
+                                            <th style="color: white;" scope="col">Name</th>
+                                            <td style="color: white;"><?php echo $row[2]; ?></td>
+                                        </tr> 
+                                        <tr>
+                                        <tr>
+                                            <th style="color: white;" scope="col">Email</th>
+                                            <td style="color: white;"><?php echo $row[3]; ?></td>
+                                        </tr> 
+                                        <tr>
+                                            <th style="color: white;" scope="col">Phone</th>
+                                            <td style="color: white;"><?php echo $row[5]; ?></td>
+                                        </tr>       
+                                        <tr>
+                                            <th style="color: white;" scope="col">Credit Card No.</th>
+                                            <td style="color: white;"><?php echo $row[6]; ?></td>
+                                        </tr>                
+                                        <?php
                                         
-                                        if(mysqli_num_rows($myresult)) {
-                                            while ($row = mysqli_fetch_array($myresult)) {
-                                                
-                                    ?>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <td><?php echo $row[2]; ?></td>
-                                    </tr> 
-                                    <tr>
-                                    <tr>
-                                        <th scope="col">Email</th>
-                                        <td><?php echo $row[3]; ?></td>
-                                    </tr> 
-                                    <tr>
-                                        <th scope="col">Phone</th>
-                                        <td><?php echo $row[5]; ?></td>
-                                    </tr>       
-                                    <tr>
-                                        <th scope="col">Credit Card No.</th>
-                                        <td><?php echo $row[6]; ?></td>
-                                    </tr>                
-                                    <?php
-                                    
+                                                }
                                             }
-                                        }
-                                    ?>
-                                </tbody>                                                 
-                            </table>
+                                        ?>
+                                    </tbody>                                                 
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div style="background-color: solid red; width: 100%; height:200px;">
+
                         </div>
                     </div>
                 </div>
