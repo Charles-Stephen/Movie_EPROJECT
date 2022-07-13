@@ -142,6 +142,14 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                      <!-- COMMENT -->
                                      <div class="comment-area">
                                          <h2 class="title">comment</h2>
+                                         <?php
+                                         $query = "SELECT * FROM `review`";
+                                         $results = mysqli_query($db,$query);
+                                         if(mysqli_num_rows($results))
+                                         {
+                                            while($rows = mysqli_fetch_array($results)){
+                                                
+                                         ?>
                                          <ol class="comment-list">
                                               <li class="single-comment">
                                                  <div class="comment-body">
@@ -150,11 +158,11 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                      </div>
                                                      <div class="comment-content">
                                                          <div class="comment-header">
-                                                             <h3 class="comment-title">Kosmi Kotalia</h3>
+                                                             <h3 class="comment-title"><?php echo $rows[2];?></h3>
                                                          </div>
-                                                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which.</p>
+                                                         <p><?php echo $rows[4];?></p>
                                                          <div class="blog-details-reply-box">
-                                                             <div class="comment-time">30 minits ago</div>
+                                                             <div class="comment-time"><?php echo "date(format,timestamp)"?></div>
                                                              <div class="comment-reply">
                                                                  <a href="#" class="Repost">Repost</a>
                                                              </div>
@@ -163,12 +171,17 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                  </div>
                                              </li>
                                          </ol>
+                                         <?php
+                                         
+                                        }
+                                    }
+                                    ?>
                                          <!-- COMMENT RESPOND -->
                                          <div class="comment-respond">
                                              <h2 class="title">Leave a Comment</h2>
                                              <div class="respons-box">
                                                  <div class="form">
-                                                     <form action="myreview.php" mehod="post">
+                                                     <form action="myreview.php" method="post">
                                                          <div class="row">
                                                              <div class="col-md-6">
                                                                  <div class="form-group">
@@ -185,14 +198,13 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                          </div>
                                                          <div class="form-group">
                                                              <label for="message">Write a Message :</label>
-                                                             <textarea class="form-control form-comment" cols="10" rows="8" name="comment" required name="msg"></textarea>
+                                                             <textarea class="form-control form-comment" cols="10" rows="8" required name="msg"></textarea>
                                                          </div>
                                                          <input type="hidden" name="mid" value="<?php echo $row[0]; ?>">
                                                          <div class="buttons">
                                                              <input type="submit" name="submit" class="btn btn-success" value="Send Comment">
                                                          </div>
-                                                     </form>
-                                                     
+                                                     </form>       
                                                  </div>
                                              </div>
                                          </div>
