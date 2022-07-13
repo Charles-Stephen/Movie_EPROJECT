@@ -1,4 +1,5 @@
 <?php
+session_start();
 $db = mysqli_connect("localhost", "root", "", "my_movie");
 ?>
 <!doctype html>
@@ -143,8 +144,8 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                      <div class="comment-area">
                                          <h2 class="title">comment</h2>
                                          <?php
-                                         $query = "SELECT * FROM `review`";
-                                         $results = mysqli_query($db,$query);
+                                         $query = "SELECT * FROM `review` WHERE `Movie_id` = $row[0]";
+                                         $results = mysqli_query($db,$query);                                        
                                          if(mysqli_num_rows($results))
                                          {
                                             while($rows = mysqli_fetch_array($results)){
@@ -162,10 +163,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                          </div>
                                                          <p><?php echo $rows[4];?></p>
                                                          <div class="blog-details-reply-box">
-                                                             <div class="comment-time"><?php echo "date(format,timestamp)"?></div>
-                                                             <div class="comment-reply">
-                                                                 <a href="#" class="Repost">Repost</a>
-                                                             </div>
+                                                             <div class="comment-time"><?php echo $rows[5];?></div>                                                             
                                                          </div>
                                                      </div>
                                                  </div>

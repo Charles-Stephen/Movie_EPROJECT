@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 11:49 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Generation Time: Jul 13, 2022 at 03:14 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -157,7 +157,7 @@ CREATE TABLE `movie_sch2` (
 
 INSERT INTO `movie_sch2` (`id`, `movie_date`, `movie_time_id`, `theater_id`, `movie_id`, `total_seats`, `available_seats`, `box_seats`, `gold_seats`, `platinum_seats`) VALUES
 (1, '2022-07-18', 1, 1, 4, 100, 100, 70, 20, 10),
-(2, '2022-07-18', 2, 1, 6, 100, 100, 70, 20, 10),
+(2, '2022-07-18', 2, 2, 6, 100, 100, 70, 20, 10),
 (4, '2022-07-20', 2, 1, 4, 100, 100, 70, 20, 10);
 
 -- --------------------------------------------------------
@@ -183,6 +183,28 @@ INSERT INTO `movie_time` (`id`, `time`) VALUES
 (5, '7:00 pm'),
 (6, '9:30 pm'),
 (7, '12:00 am');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `Id` int(11) NOT NULL,
+  `Movie_id` int(11) NOT NULL,
+  `Name` varchar(225) NOT NULL,
+  `Email` varchar(225) NOT NULL,
+  `Message` longtext NOT NULL,
+  `rv_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`Id`, `Movie_id`, `Name`, `Email`, `Message`, `rv_date`) VALUES
+(3, 7, 'joker', 'joker@gmail.com', 'Nice  Movie', '07/13/2022 03:12:11 pm');
 
 -- --------------------------------------------------------
 
@@ -325,6 +347,12 @@ ALTER TABLE `movie_time`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `seat_catgory`
 --
 ALTER TABLE `seat_catgory`
@@ -393,6 +421,12 @@ ALTER TABLE `movie_sch2`
 --
 ALTER TABLE `movie_time`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `seat_catgory`

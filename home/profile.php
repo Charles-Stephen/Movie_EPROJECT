@@ -77,13 +77,14 @@
                                     <tbody>                       
                                         <?php
                                             $id = $_SESSION["profile"];
+                                            $usid = "";
                                             $psel = "SELECT * FROM `users` WHERE `profile` = '$id'";
                                             $myresult = mysqli_query($db, $psel);
 
                                             
                                             if(mysqli_num_rows($myresult)) {
                                                 while ($row = mysqli_fetch_array($myresult)) {
-                                                    
+                                                    $usid = $row[0];
                                         ?>
                                         <tr>
                                             <th style="color: white;" scope="col">Name</th>
@@ -114,9 +115,79 @@
                     </div>
 
                     <div class="container">
-                        <div style="background-color: solid red; width: 100%; height:200px;">
+                        <h1 class="text-center" style="color: white;"><i class="fa fa-ticket" aria-hidden="true"></i> TICKETS </h1>
+                        <?php
+                            $ticket_sel = "SELECT * FROM `tickets` WHERE `user_id` = $usid";
+                            $ticket_result = mysqli_query($db, $ticket_sel);
+                            if(mysqli_num_rows($ticket_result)) {
+                                while($ticket_row = mysqli_fetch_array($ticket_result)) {
+                                    
+                        ?>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8" style="background-color: #fcba5d; height: 240px; margin-top: 4vw; border-color: white; border-top-style: solid; border-right-style: dashed; border-bottom-style: solid; border-left-style: solid;">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><?php echo $ticket_row[5]; ?></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <?php                          
+                                            $sch = "SELECT * FROM `movie_sch2` WHERE `id` = $ticket_row[6]";
+                                            $sch_r = mysqli_query($db, $sch);
+                                            $sch_w = mysqli_fetch_array($sch_r);
 
+                                            $movsel = "SELECT * FROM `allmovies` WHERE `id` = $sch_w[4]";
+                                            $mov_r = mysqli_query($db, $movsel);
+                                            while($mov_w = mysqli_fetch_array($mov_r)) {
+                                                ?>
+                                                <h3 class="text-center" style="overflow-wrap: break-word;"><b><?php echo $mov_w[2]; ?></b></h3>
+                                                <?php
+                                            }
+                                            
+                                            ?>
+                                                <p>Kids : <?php echo $ticket_row[4]; ?></p>
+                                            
+                                                <p>Adults : <?php echo $ticket_row[3]; ?></p>
+                                            <?php
+                                            
+                                            $thesel = "SELECT * FROM `theater` WHERE `id` = $sch_w[3]";
+                                            $the_r = mysqli_query($db, $thesel);
+                                            while($the_w = mysqli_fetch_array($the_r)) {
+                                                ?>
+                                                <p>Theater : <?php echo $the_w[1]; ?></p>
+                                                <?php
+                                            }
+                                            
+                                            $tmsel = "SELECT * FROM `movie_time` WHERE `id` = $sch_w[2]";
+                                            $tm_r = mysqli_query($db, $tmsel);
+                                            while($tm_w = mysqli_fetch_array($tm_r)) {
+                                                ?>
+                                                <p>Time : <?php echo $tm_w[1]; ?></p>
+                                                <?php
+                                            }
+                                                                                    
+                                            ?>
+                                                <p>Date : <?php echo $sch_w[1]; ?></p>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="background-color: #fcba5d; height: 240px; margin-top: 4vw; margin-top: 4vw; border-color: white; border-top-style: solid; border-right-style: solid; border-bottom-style: solid;">
+                            <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Pass</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3 class="text-center" style="overflow-wrap: break-word;"><b><?php echo $ticket_row[7]; ?></b></h3>
+                                        <img src="./images/down-removebg-preview.png" class="img-responsive" alt="Responsive image">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <?php
+                        
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

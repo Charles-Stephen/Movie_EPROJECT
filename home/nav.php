@@ -25,9 +25,6 @@
                      <a href="index.php">Home</a>
                  </li>
                  <li>
-                     <a href="gallery.php">Gallery</a>
-                 </li>
-                 <li>
                      <a href="ticket.php">Ticket Booking</a>
                  </li>
                  <li>
