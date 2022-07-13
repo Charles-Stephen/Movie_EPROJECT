@@ -12,7 +12,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
     <meta name="keywords" content="film review, movie, movie database, movie series, presentation, showcase, tv show">
     <meta name="author" content="Themepul">
     <title>Movie Details</title>
-    <link href="images/favicon.png" rel="icon" />
+    <link href="images/mo.png" rel="icon" />
     <!-- bootstrap css -->
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-select.min.css" rel="stylesheet" />
@@ -101,14 +101,23 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                          <span class="fa fa-star"></span>
                                                          <a href="#">6/5 ratitng</a>
                                                      </div>
-                                                     <div class="dec-review-meta">
-                                                         <ul>
-                                                             <li><span>Category <label>:</label></span><a href="#">English Animation Movies</a></li>
-                                                             <li><span>Actor <label>:</label></span><a href="#"><?php echo $row[7]?></a></li>
-                                                             <li><span>Genre <label>:</label></span><a href="#"><?php echo $row[5]?></a></li>
-                                                             <li><span>releace <label>:</label></span><a href="#">15,10,17</a></li>
-                                                             <li><span>languase <label>:</label></span><a href="#">english</a></li>
-                                                         </ul>
+                                                     <div class="dec-review-meta">                                                              
+                                                         <table class="table">                                                            
+                                                             <tbody>
+                                                                 <tr class="row">
+                                                                     <th class="col-3" style="color: white;"><b>Actor</b></th>
+                                                                     <td class="col-8" style="color: white; text-align: start;"><?php echo " : " . $row[7]?></td>
+                                                                 </tr>
+                                                                 <tr class="row">
+                                                                     <th class="col-3" style="color: white;"><b>Genre</b></th>
+                                                                     <td class="col-8" style="color: white; text-align: start;"><?php echo " : " . $row[5]?></td>
+                                                                 </tr>
+                                                                 <tr class="row">
+                                                                     <th class="col-3" style="color: white;"><b>language</b></th>
+                                                                     <td class="col-8" style="color: white; text-align: start;"><?php echo " : " . $row[8]?></td>
+                                                                 </tr>
+                                                             </tbody>
+                                                         </table>
                                                      </div>
                                                      <div class="social-links">
                                                          <strong>Share :</strong>
@@ -129,6 +138,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                          </p><?php echo $row[4]?></p>
                                      </div>
                                      <!-- END DISCRIPTION -->
+                                     
                                      <!-- COMMENT -->
                                      <div class="comment-area">
                                          <h2 class="title">comment</h2>
@@ -163,22 +173,22 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                              <div class="col-md-6">
                                                                  <div class="form-group">
                                                                      <label for="name">Nick Name :</label>
-                                                                     <input id="name" class="form-control form-mane" required="" type="text" name="name">
+                                                                     <input class="form-control form-mane" required="" type="text" name="name">
                                                                  </div>
                                                              </div>
                                                              <div class="col-md-6">
                                                                  <div class="form-group">
                                                                      <label for="email">E-mail :</label>
-                                                                     <input id="email" class="form-control form-email" required="" type="email" name="email">
+                                                                     <input class="form-control form-email" required="" type="email" name="email">
                                                                  </div>
                                                              </div>
                                                          </div>
                                                          <div class="form-group">
                                                              <label for="message">Write a Message :</label>
-                                                             <textarea id="message" class="form-control form-comment" cols="10" rows="8" name="comment" required="" name="msg"></textarea>
+                                                             <textarea class="form-control form-comment" cols="10" rows="8" name="comment" required="" name="msg"></textarea>
                                                          </div>
                                                          <div class="buttons">
-                                                             <a href="#" class="btn btn-buttons" name="submit">read more</a>
+                                                             <input type="submit" name="submit" class="btn btn-success" value="Send Comment">
                                                          </div>
                                                      </form>
                                                      <?php
@@ -187,7 +197,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                              $Name = $_POST["name"];
                                                              $Email = $_POST["email"];
                                                              $Message = $_POST["msg"];
-                                                             $cmp = "INSERT INTO `complaints`(`id`, `name`, `email`, `subject`, `message`) VALUES (Null,'$Name','$Email','$Subject','$Message')";
+                                                             $cmp = "INSERT INTO `review`(`Id`, `Movie_id`, `Name`, `Email`, `Message`) VALUES (Null,'$id','$Name','$Email','$Message')";
                                                              $result3 = mysqli_query($db, $cmp);
                                                              $cp = mysqli_num_rows($result3);
                                                              if($cp) 

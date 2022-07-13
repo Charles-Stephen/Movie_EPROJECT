@@ -3101,7 +3101,13 @@ span.count {
     margin-top: 40%;
 }
 
-.dec-review-meta ul li a {
+/* .dec-review-meta ul li a {
+    color: #fff;
+    font-weight: normal;
+    margin-left: 11px;
+} */
+
+.dec-review-meta table tbody tr td a {
     color: #fff;
     font-weight: normal;
     margin-left: 11px;
