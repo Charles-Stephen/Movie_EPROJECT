@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 03:14 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jul 14, 2022 at 08:13 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -298,7 +298,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `profile`, `Name`, `Email`, `Pass`, `Phone`, `Credit_Card`, `user_type`) VALUES
 (2, '1779765651.jpg', 'Infernape', 'infernape@gmail.com', '202cb962ac59075b964b07152d234b70', '03343427289', '123456789', 0),
-(5, 'Overlord-Anime-Season-4-710x400.jpg', 'Ainz Ooal Gown', 'ainz@hotmail.com', '202cb962ac59075b964b07152d234b70', '03343427289', '987654321', 1);
+(5, 'Overlord-Anime-Season-4-710x400.jpg', 'Ainz Ooal Gown', 'ainz@hotmail.com', '202cb962ac59075b964b07152d234b70', '03343427289', '987654321', 1),
+(6, '1369737881bl.webp', 'Jack', 'jack@gmail.com', '202cb962ac59075b964b07152d234b70', '03362265690', '147258369', 1);
 
 --
 -- Indexes for dumped tables
@@ -450,7 +451,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
