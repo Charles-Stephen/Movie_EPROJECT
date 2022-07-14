@@ -7,10 +7,9 @@ session_start();
     if(isset($_POST["submit"])) {
         $email = $_POST["email"];
         $c_n = $_POST["card_No"];
-        $sel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Credit_Card` = $c_n";
-        $result = mysqli_query($db, $sel);
-        $dr = mysqli_num_rows($result);
-        if($dr == null) {                        
+        echo $checksel = "SELECT * FROM `users` WHERE `Email` = '$email' && `Credit_Card` = '$c_n'";
+        $checkresult = mysqli_query($db, $checksel);
+        if(mysqli_num_rows($checkresult)){                               
             $error = "Email OR Credit Card Already Exists";
         }
         else {

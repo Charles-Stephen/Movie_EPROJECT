@@ -10,7 +10,10 @@ $sel = "SELECT m.id,m.movie_date,tm.time FROM `movie_sch2` m INNER JOIN theater 
 $result = mysqli_query($db, $sel);
 
 ?> <option value="0">Please Select</option><?php
-while($row = mysqli_fetch_array($result)) { ?>
+while($row = mysqli_fetch_array($result)) {
+$_SESSION["mymovie_date"] = $row['movie_date'];
+$_SESSION["mytime"] = $row['time'];
+?>
 <option value="<?php echo $row['id']; ?>"><?php echo $row['movie_date'] . " at " . $row["time"]; ?></option>
 <?php 
 }

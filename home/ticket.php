@@ -80,6 +80,10 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                 <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
                                     <div class="row">
                                         <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Book Your Tickets</h1>
+                                        <?php
+                                            $myavail = "";
+                                        ?>
+                                        <h3>Available Tickets : <span>Gold<?php echo " " .  ?></span></h3>
                                     <?php
                                         
                                     ?>

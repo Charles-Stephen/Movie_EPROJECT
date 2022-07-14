@@ -195,6 +195,11 @@
                         
                                 }
                             }
+                            else {
+                                ?>
+                                <div class="alert alert-danger" role="alert">No Purchase Found</div>
+                                <?php
+                            }
                         ?>
                     </div>
                 </div>

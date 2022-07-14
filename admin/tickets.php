@@ -217,6 +217,15 @@
                                                 }
                                             ?>
                                             <td class="align-middle"><?php echo $sch_w[1]; ?></td>
+                                            <?php
+                                                $tmsel = "SELECT * FROM `movie_time` WHERE `id` = $sch_w[2]";
+                                                $tm_r = mysqli_query($db, $tmsel);
+                                                while($tm_w = mysqli_fetch_array($tm_r)) {
+                                                    ?>
+                                                    <td class="align-middle"><?php echo $tm_w[1]; ?></td>
+                                                    <?php
+                                                }
+                                            ?>
                                             <!-- <td class="align-middle"> <a href="Theater_edit.php?id=<?php echo $row[0]; ?>"><span class="badge bg-info rounded-pill badge-sm">EDIT</span></a> </td>
                                             <td class="align-middle"> <span type="button" data-bs-toggle="modal" data-bs-target="#k<?php echo $i; ?>" class="badge bg-danger rounded-pill badge-sm">DELETE</span> </td> -->
                                         </tr>
