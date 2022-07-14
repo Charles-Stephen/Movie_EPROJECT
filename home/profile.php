@@ -174,7 +174,15 @@
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="background-color: #fcba5d; height: 240px; margin-top: 4vw; margin-top: 4vw; border-color: white; border-top-style: solid; border-right-style: solid; border-bottom-style: solid;">
                             <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Pass</h3>
+                                        <?php
+                                         $pgsel = "SELECT * FROM `seat_catgory` WHERE `id` = $ticket_row[2]";
+                                         $pg_r = mysqli_query($db, $pgsel);
+                                         while($pg_w = mysqli_fetch_array($pg_r)) {
+                                             ?>
+                                             <h3 class="panel-title"><?php echo $pg_w[1] . " Pass"; ?></h3>
+                                             <?php
+                                         }
+                                        ?>
                                     </div>
                                     <div class="panel-body">
                                         <h3 class="text-center" style="overflow-wrap: break-word;"><b><?php echo $ticket_row[7]; ?></b></h3>
