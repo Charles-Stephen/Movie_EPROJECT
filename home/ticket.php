@@ -80,18 +80,8 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                 <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
                                     <div class="row">
                                         <h1 class="text-center" style="margin-top: 3vw; margin-bottom: 3vw; color:red;">Book Your Tickets</h1>
-<<<<<<< HEAD
-                                        <h3 id="seatsleft" style="color: white;"></h3>
-=======
-                                        <?php
-                                            $myavail = "";
-                                        ?>
-                                        <h3>Available Tickets : <span>Gold<?php echo " " .  ?></span></h3>
-                                    <?php
-                                        
-                                    ?>
-                                         <span style=" color:zred;"><h2></h2></span>
->>>>>>> 59f85e985e501fca00cb54d2938cf8f8b81c5cbd
+                                        <h3 style="color: white;" id="seatsleft"></h3>                                                        
+
                                         <?php
                                         if(isset($_POST["submit"])) {
                                             // $w_movie = $_POST["myselmov"];
