@@ -87,7 +87,7 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                     <?php
                                         
                                     ?>
-                                        <span style=" color:red;"><h2></h2></span>
+                                         <span style=" color:zred;"><h2></h2></span>
                                         <?php
                                         if(isset($_POST["submit"])) {
                                             // $w_movie = $_POST["myselmov"];
