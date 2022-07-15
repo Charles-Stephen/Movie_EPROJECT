@@ -92,7 +92,13 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                 $seatresult1 = (int)$myseat3 * $row1[2];
                                                 $seatresult2 = (int)$myseat4 * $row2[2];
                                                 $totalresult = (int)$seatresult1 + (int)$seatresult2;
-                                                break;                                            
+                                                break;
+                                            
+                                            // default:
+                                            //     $seatresult1 = (int)$myseat3 * $row1[2];
+                                            //     $seatresult2 = (int)$myseat4 * $row2[2];
+                                            //     $totalresult = (int)$seatresult1 + (int)$seatresult2;
+                                            //     break;
                                         }
 
                                         if(isset($_POST["submit2"])) {
@@ -113,27 +119,10 @@ $db = mysqli_connect("localhost", "root", "", "my_movie");
                                                 $userseats = (int)$myseat3 + (int)$myseat4;
                                                 $tk_in = "INSERT INTO `tickets`(`user_id`, `your_package`, `adult_seatNo`, `kids_seatNo`, `ticket_No`, `movie_sch2_Id`, `quantity`, `amount`) VALUES ('$ouruser','$mycat1','$myseat3','$myseat4','$tkno','$wdate1','$userseats','$totalresult')";
                                                 $tk_result = mysqli_query($db, $tk_in);
-                                                
-                                                $minus_query = "SELECT * FROM `movie_sch2` WHERE `id` = $wdate1";
-                                                $minus_result = mysqli_query($db, $minus_query);
-                                                $minus_row = mysqli_fetch_array($minus_result);
-                                                switch ($mycat1) {
-                                                    case 1:
-                                                        $upminus = $minus_row[7] - (int)$userseats;
-                                                        $minus_seat = "UPDATE `movie_sch2` SET `box_seats`='$upminus' WHERE `id` = $wdate1";
-                                                        $minus_done = mysqli_query($db, $minus_seat);
-                                                        break;
-                                                    case 2:
-                                                        $upminus = $minus_row[8] - (int)$userseats;
-                                                        $minus_seat = "UPDATE `movie_sch2` SET `gold_seats`='$upminus' WHERE `id` = $wdate1";
-                                                        $minus_done = mysqli_query($db, $minus_seat);
-                                                        break;
-                                                    case 3:
-                                                        $upminus = $minus_row[9] - (int)$userseats;
-                                                        $minus_seat = "UPDATE `movie_sch2` SET `platinum_seats`='$upminus' WHERE `id` = $wdate1";
-                                                        $minus_done = mysqli_query($db, $minus_seat);
-                                                        break;                                            
-                                                }
+                                                // remove all session variables
+                                                // session_unset();
+                                                // destroy the session
+                                                // session_destroy();
                                                 ?>
                                                 <Script>
                                                     window.location.assign("./index.php");
