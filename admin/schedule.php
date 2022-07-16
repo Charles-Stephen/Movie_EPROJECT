@@ -28,12 +28,12 @@
         $playmovie = $_POST["playmovie"];
         $ttl_seats = $_POST["ttl_seats"];
         $av_seats = $_POST["av_seats"];
-        $ins = "INSERT INTO `movie_sch2`(`movie_date`, `movie_time`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES ('$playdate','$playtime','$playtheater','$playmovie','$ttl_seats','$av_seats')";
+       echo $ins = "INSERT INTO `movie_sch2`(`movie_date`, `movie_time`, `theater_id`, `movie_id`, `total_seats`, `available_seats`) VALUES ('$playdate','$playtime','$playtheater','$playmovie','$ttl_seats','$av_seats')";
         $res = mysqli_query($db, $ins);
         ?>
-        <Script>
-            window.location.assign("./schedule.php");
-        </Script>
+        <!-- <Script> -->
+            <!-- window.location.assign("./schedule.php"); -->
+        <!-- </Script> -->
         <?php
     }
 
